@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="TrianglesVCircles.Views.Ship"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Viewbox Width="85" VerticalAlignment="Bottom" Margin="0,0,0,60">
+            <Path Data="M28.63014,22.577849 C24.082872,22.577849 20.396582,26.264137 20.396582,30.811407 20.396582,35.358677 24.082872,39.044968 28.63014,39.044968 33.17741,39.044968 36.863701,35.358677 36.863701,30.811407 36.863701,26.264137 33.17741,22.577849 28.63014,22.577849 z M28.027502,1.5 L54.555099,47.447098 1.5,47.447098 z" 
+						Fill="#5D5D5D5D" Height="48.947" Stretch="Fill" Stroke="White" 
+				 		StrokeThickness="3" StrokeLineJoin="Round" Width="56.055"/>
+        </Viewbox>
+    </Grid>
+</UserControl>

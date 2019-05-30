@@ -1,0 +1,569 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:TrianglesVCircles="clr-namespace:TrianglesVCircles"
+             xmlns:story="clr-namespace:TrianglesVCircles.GameControls.Story"
+             xmlns:gameControls="clr-namespace:TrianglesVCircles.GameControls"
+             x:Class="TrianglesVCircles.GameControls.Story.Introduction" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="600">
+	<UserControl.Resources>
+		<Storyboard x:Key="Animation">
+			<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.FontWeight)" Storyboard.TargetName="textBlock">
+				<DiscreteObjectKeyFrame KeyTime="0:0:2.5">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:10.1">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:10.514">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:11.159">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:15.7">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:16.426">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:16.8">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:17.6">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:27.9">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:28.6">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:29.051">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:29.7">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:37.5">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:38.385">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:38.8">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:39.6">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:47.3">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:48">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:48.4">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:49">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:56.6">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:57.3">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:57.6">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:0:58.2">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:6.285">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:7.011">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:7.737">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:8.566">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:14.686">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:15.412">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:16.138">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:16.864">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:22.257">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:23.086">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:23.812">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:24.642">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:30.243">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:30.969">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:31.695">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:32.524">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+				<DiscreteObjectKeyFrame KeyTime="0:1:39.1">
+					<DiscreteObjectKeyFrame.Value>
+						<FontWeight>Normal</FontWeight>
+					</DiscreteObjectKeyFrame.Value>
+				</DiscreteObjectKeyFrame>
+			</ObjectAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="textBlock">
+				<EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:3.433" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.3" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:10.1" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:10.514" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:11.159" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:15.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:16.426" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:16.8" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:17.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:27.9" Value="0.94936708860759489"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:28.6" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:29.051" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:29.7" Value="0.99"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:37.5" Value="0.99"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:38.385" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:38.8" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:39.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:47.3" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:48" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:48.4" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:49" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:56.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:57.3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:57.6" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:58.2" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:6.285" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:7.011" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:7.737" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:8.566" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:14.686" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:15.412" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:16.138" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:16.864" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:22.257" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:23.086" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:23.812" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:24.642" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:30.243" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:30.969" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:31.695" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:32.524" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:39.1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:39.7" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:40.3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:41.1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:49.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:51.3" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="5"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0:0:3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:16.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:19.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="background">
+				<EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:52" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:54" Value="0.25"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0:0:3.3" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="0.9375"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:16.1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:19.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Color)" Storyboard.TargetName="ellipse">
+				<EasingColorKeyFrame KeyTime="0:0:3.8" Value="Black"/>
+				<EasingColorKeyFrame KeyTime="0:0:4.8" Value="sc#1, 0.4347826, 0.0143933762, 0.0143933762"/>
+				<EasingColorKeyFrame KeyTime="0:0:6.1" Value="#FFFF3333"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.BlurRadius)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0:0:3.8" Value="5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:4.8" Value="16.739130434782609"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:6.1" Value="32"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="crown">
+				<EasingDoubleKeyFrame KeyTime="0:0:9.5" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:16.9" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:19.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:19" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:21.8" Value="0.995"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:23.6" Value="0.995"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:34.3" Value="0.995"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:44" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:21.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:23.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:34.3" Value="1.193840579710145"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:44" Value="1.25"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="logo">
+				<EasingDoubleKeyFrame KeyTime="0:0:21.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:23.6" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:34.3" Value="1.193840579710145"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:44" Value="1.25"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="triangleCastle">
+				<EasingDoubleKeyFrame KeyTime="0:0:44.1" Value="0.5">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:54.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:3.5" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:5.8" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="triangleCastle">
+				<EasingDoubleKeyFrame KeyTime="0:0:44.1" Value="0.5">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:54.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:3.5" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:5.8" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="triangleCastle">
+				<EasingDoubleKeyFrame KeyTime="0:0:44.1" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:54.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:3.5" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:5.8" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:55.2" Value="-192">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:2.4" Value="-198"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:4.1" Value="-198"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:55.2" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:2.4" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:3.3" Value="0.65"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:4.1" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:5" Value="0.65"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:5.8" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+				<EasingDoubleKeyFrame KeyTime="0:0:55.2" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:2.4" Value="20"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:4.1" Value="20"/>
+			</DoubleAnimationUsingKeyFrames>
+			<StringAnimationUsingKeyFrames Storyboard.TargetProperty="(TextBlock.Text)" Storyboard.TargetName="textBlock">
+				<DiscreteStringKeyFrame KeyTime="0:0:2.5" Value="Long ago, there lived a powerful warlord named Lord Circle Meridian.  He was notorious for conquering and colonizing many worlds."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:3.433" Value="Long ago, there lived a powerful warlord named Lord Circle Meridian.  He was notorious for conquering and colonizing many worlds."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:9.3" Value="Long ago, there lived a powerful warlord named Lord Circle Meridian.  He was notorious for conquering and colonizing many worlds."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:10.1" Value="Long ago, there lived a powerful warlord named Lord Circle Meridian.  He was notorious for conquering and colonizing many worlds."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:10.514" Value="Despite possessing supreme power, he wanted more. He wanted to conquer everything."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:11.159" Value="Despite possessing supreme power, he wanted more. He wanted to conquer everything."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:15.7" Value="Despite possessing supreme power, he wanted more. He wanted to conquer everything."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:16.426" Value="Despite possessing supreme power, he wanted more. He wanted to conquer everything."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:16.8" Value="Beneath his castle, he uncovers an ancient secret that resembles a circle and a triangle. He learns that activating this beacon will endow him with unimaginable power."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:17.6" Value="Beneath his castle, he uncovers an ancient secret that resembles a circle and a triangle. He learns that activating this beacon will endow him with unimaginable power."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:27.9" Value="Beneath his castle, he uncovers an ancient secret that resembles a circle and a triangle. He learns that activating this beacon will endow him with unimaginable power."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:28.6" Value="Beneath his castle, he uncovers an ancient secret that resembles a circle and a triangle. He learns that activating this beacon will endow him with unimaginable power."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:29.051" Value="He learns that the beacon requires the royal blood of a Princess from the Triangle world to activate. "/>
+				<DiscreteStringKeyFrame KeyTime="0:0:29.7" Value="He learns that the beacon requires the royal blood of a Princess from the Triangle world to activate. "/>
+				<DiscreteStringKeyFrame KeyTime="0:0:37.5" Value="He learns that the beacon requires the royal blood of a Princess from the Triangle world to activate. "/>
+				<DiscreteStringKeyFrame KeyTime="0:0:38.385" Value="He learns that the beacon requires the royal blood of a Princess from the Triangle world to activate. "/>
+				<DiscreteStringKeyFrame KeyTime="0:0:38.8" Value="He learns that the Triangle kingdom has existed for as long as the Circle kingdom."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:39.6" Value="He learns that the Triangle kingdom has existed for as long as the Circle kingdom."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:47.3" Value="He learns that the Triangle kingdom has existed for as long as the Circle kingdom."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:48" Value="He learns that the Triangle kingdom has existed for as long as the Circle kingdom."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:48.4" Value="Despite being small, the Triangle kingdom has never been conquered; they have never lost a single war."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:49" Value="Despite being small, the Triangle kingdom has never been conquered; they have never lost a single war."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:56.6" Value="Despite being small, the Triangle kingdom has never been conquered; they have never lost a single war."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:57.3" Value="Despite being small, the Triangle kingdom has never been conquered; they have never lost a single war."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:57.6" Value="Lord Circle Meridian traveled to the Triangle world and sieged the Triangle castle. The Princess was kidnapped . . ."/>
+				<DiscreteStringKeyFrame KeyTime="0:0:58.2" Value="Lord Circle Meridian traveled to the Triangle world and sieged the Triangle castle. The Princess was kidnapped . . ."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:6.285" Value="Lord Circle Meridian traveled to the Triangle world and sieged the Triangle castle. The Princess was kidnapped . . ."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:7.011" Value="Lord Circle Meridian traveled to the Triangle world and sieged the Triangle castle. The Princess was kidnapped . . ."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:7.737" Value="During the siege, the Prince was embarking on a hunt.  He saw the castle in flames and returned only to find death and destruction..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:8.566" Value="During the siege, the Prince was embarking on a hunt.  He saw the castle in flames and returned only to find death and destruction..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:14.686" Value="During the siege, the Prince was embarking on a hunt.  He saw the castle in flames and returned only to find death and destruction..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:15.412" Value="During the siege, the Prince was embarking on a hunt.  He saw the castle in flames and returned only to find death and destruction..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:16.138" Value="Fueled with rage, the Prince swore vegeance upon the enemies who took siege upon his castle..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:16.864" Value="Fueled with rage, the Prince swore vegeance upon the enemies who took siege upon his castle..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:22.257" Value="Fueled with rage, the Prince swore vegeance upon the enemies who took siege upon his castle..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:23.086" Value="Fueled with rage, the Prince swore vegeance upon the enemies who took siege upon his castle..."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:23.812" Value="Upon investigating the wreckage, the Prince began to sense traces of Circle magic. "/>
+				<DiscreteStringKeyFrame KeyTime="0:1:24.642" Value="Upon investigating the wreckage, the Prince began to sense traces of Circle magic. "/>
+				<DiscreteStringKeyFrame KeyTime="0:1:30.243" Value="Upon investigating the wreckage, the Prince began to sense traces of Circle magic. "/>
+				<DiscreteStringKeyFrame KeyTime="0:1:30.969" Value="Upon investigating the wreckage, the Prince began to sense traces of Circle magic. "/>
+				<DiscreteStringKeyFrame KeyTime="0:1:31.695" Value="After an entire day, he still could not locate the Princess. He realizes is she probably still alive, but perhaps kidnapped."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:32.524" Value="After an entire day, he still could not locate the Princess. He realizes is she probably still alive, but perhaps kidnapped."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:39.1" Value="After an entire day, he still could not locate the Princess. He realizes is she probably still alive, but perhaps kidnapped."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:39.7" Value="After an entire day, he still could not locate the Princess. He realizes is she probably still alive, but perhaps kidnapped."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:40.3" Value="He draws upon the remaining power of the castle.  With this energy, he can travel the Circle world and rescue the Princess."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:41.1" Value="He draws upon the remaining power of the castle.  With this energy, he can travel the Circle world and rescue the Princess."/>
+				<DiscreteStringKeyFrame KeyTime="0:1:49.8" Value="He draws upon the remaining power of the castle.  With this energy, he can travel the Circle world and rescue the Princess."/>
+			</StringAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="castleInRuins">
+				<EasingDoubleKeyFrame KeyTime="0:1:4.5" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:12.3" Value="0.73"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:30.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:32.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="castleInRuins">
+				<EasingDoubleKeyFrame KeyTime="0:1:4.5" Value="0.85">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:12.3" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:30.7" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="castleInRuins">
+				<EasingDoubleKeyFrame KeyTime="0:1:4.5" Value="0.85">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<ExponentialEase EasingMode="EaseIn"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:1:12.3" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:30.7" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ship">
+				<EasingDoubleKeyFrame KeyTime="0:1:31.7" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:35.948" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:48.8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:51.8" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ship">
+				<EasingDoubleKeyFrame KeyTime="0:1:31.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:35.948" Value="0.45"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:48.8" Value="0.45"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:51.8" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ship">
+				<EasingDoubleKeyFrame KeyTime="0:1:31.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:35.948" Value="0.45"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:48.8" Value="0.45"/>
+				<EasingDoubleKeyFrame KeyTime="0:1:51.8" Value="1"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>    
+		<Grid Grid.RowSpan="2" Margin="0,-30,0,30">
+			<Image x:Name="background" Margin="-455.821,-126.866,-534.627,-67.164" Grid.RowSpan="2" Source="images/storybg.jpg" Stretch="Fill" Opacity="0"/>    
+
+			<Ellipse x:Name="ellipse" Fill="{x:Null}" HorizontalAlignment="center" Height="314.926" 
+				Opacity="0"
+				Stroke="Black" VerticalAlignment="Top" Width="314.925" OpacityMask="{x:Null}" Margin="142.538,155.224,142.537,0">
+				<Ellipse.Effect>
+					<DropShadowEffect/>
+				</Ellipse.Effect>
+			</Ellipse>
+			<Ellipse x:Name="ellipse1" Fill="{x:Null}" HorizontalAlignment="Left" Height="40.298" Margin="144.776,304.478,0,0" Stroke="Black" VerticalAlignment="Top" Width="310.448" Opacity="0"/>
+			<Image x:Name="crown" HorizontalAlignment="Center" 
+				Source="images/black-crown-clipart-queen-crown-md.png" 
+				RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Width="298.5" Opacity="0" Margin="150.75,25.5,150.75,0">
+				<Image.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Image.RenderTransform>
+			</Image>
+			<Image x:Name="logo" HorizontalAlignment="Center" VerticalAlignment="Center" 
+				Source="/TrianglesVCircles;component/GameControls/logo.png" Opacity="0" RenderTransformOrigin="0.5,0.5" Margin="0,52,0,148" >
+				<Image.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Image.RenderTransform>
+			</Image>
+		</Grid>
+		<Image x:Name="image"  Source="images/f4.png" Stretch="Uniform" RenderTransformOrigin="0.5,0.5" Opacity="0">
+			<Image.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Image.RenderTransform>
+		</Image>
+        <story:TriangleCastle x:Name="triangleCastle" HorizontalAlignment="Center" 
+		Margin="-11.895,16.5,24.105,108.227" Grid.RowSpan="2" Opacity="0" RenderTransformOrigin="0.5,0.5">
+            <story:TriangleCastle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </story:TriangleCastle.RenderTransform>
+        </story:TriangleCastle>
+        <TrianglesVCircles:CastleInRuins x:Name="castleInRuins"  HorizontalAlignment="Center" Margin="26.355,36,26.355,193.453" Grid.RowSpan="2" Opacity="0" RenderTransformOrigin="0.5,0.5">
+        	<TrianglesVCircles:CastleInRuins.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</TrianglesVCircles:CastleInRuins.RenderTransform>
+        </TrianglesVCircles:CastleInRuins>
+        <gameControls:Ship x:Name="ship" Opacity="0" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" >
+        	<gameControls:Ship.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</gameControls:Ship.RenderTransform>
+        </gameControls:Ship>
+        <TextBlock x:Name="textBlock" Opacity="0"
+			Grid.Row="1" Text="" 
+			FontSize="46.667" Margin="10"
+			TextAlignment="Center" HorizontalAlignment="Stretch" 
+			FontFamily="Monotype Corsiva" TextWrapping="Wrap" Foreground="Black" />
+	</Grid>
+</UserControl>

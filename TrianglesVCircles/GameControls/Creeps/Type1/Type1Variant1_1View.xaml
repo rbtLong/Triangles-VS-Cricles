@@ -1,0 +1,73 @@
+﻿<creeps:BaseEnemyControl 
+    x:Class="TrianglesVCircles.GameControls.Creeps.Type1.Type1Variant1_1View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    mc:Ignorable="d" xmlns:dim="clr-namespace:TrianglesVCircles"
+    xmlns:creeps="clr-namespace:TrianglesVCircles.GameControls.Creeps"
+    x:Name="ref">
+    <creeps:BaseEnemyControl.Resources>
+        <Storyboard x:Key="SubtleAnimation" AutoReverse="True">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Offset)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0.9">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseOut" Power="1.432"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[3].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0:0:1.1" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Offset)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0.1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseOut" Power="1.432"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[4].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0:0:1.1" Value="White">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </creeps:BaseEnemyControl.Resources>
+    <StackPanel>
+        <StackPanel.RenderTransform>
+            <TranslateTransform
+                X="{Binding XPosition}"
+                Y="{Binding YPosition}" />
+        </StackPanel.RenderTransform>
+        <Grid>
+            <Ellipse x:Name="ellipse" 
+				StrokeThickness="2"
+				Height="{x:Static dim:Dimensions.EnemyHeight}"
+				Width="{x:Static dim:Dimensions.EnemyWidth}" Fill="#5B000000" >
+            	<Ellipse.Stroke>
+            		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            			<GradientStop Color="#5B000000" Offset="0"/>
+            			<GradientStop Color="White" Offset="0.5"/>
+            			<GradientStop Color="#5B000000" Offset="1"/>
+            			<GradientStop Color="#88464646" Offset="0.862"/>
+            			<GradientStop Color="#91555555" Offset="0.167"/>
+            		</LinearGradientBrush>
+            	</Ellipse.Stroke>
+            </Ellipse>
+			<TextBlock Text="{Binding Caption, ElementName=ref}" TextAlignment="Center" VerticalAlignment="Center"
+                   FontSize="24" Foreground="#FF22FA03" FontWeight="ExtraBlack"/>
+    </Grid>
+        <TextBlock  
+            Visibility="{Binding ElementName=ref, Path=RemainingLettersVisibility}"
+            x:Name="RemainingLetters"
+            Text="{Binding ElementName=ref, Path=RemaindingLife}" 
+            TextAlignment="Center" VerticalAlignment="Center"
+            FontSize="24" Foreground="DarkSalmon" FontWeight="ExtraBlack"/>
+    </StackPanel>
+</creeps:BaseEnemyControl>

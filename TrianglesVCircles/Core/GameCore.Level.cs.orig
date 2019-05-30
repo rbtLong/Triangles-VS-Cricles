@@ -1,0 +1,213 @@
+<<<<<<< local
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
+using TrianglesVCircles.Core.Creeps;
+using TrianglesVCircles.Core.Levels;
+using TrianglesVCircles.Core.Projectiles.EnemyProjectiles;
+using TrianglesVCircles.Core.Ship;
+
+namespace TrianglesVCircles.Core
+{
+    partial class GameCore
+    {
+        private ObservableCollection<BaseEnemy> _enemies 
+            = new ObservableCollection<BaseEnemy>();
+        private BaseLevel _currentLevel;
+
+        public event EventHandler<BaseEnemy> EnemyRemoved = delegate { };
+        public event EventHandler<BaseEnemy> EnemyAdded = delegate { };
+        public event EventHandler<BaseLevel> NewLevel = delegate { };
+        public event EventHandler<Tuple<BaseLevel, string>> LevelMessage = delegate { }; 
+
+        public BaseLevel CurrentLevel
+        {
+            get { return _currentLevel; }
+            set
+            {
+                if (value == _currentLevel) return;
+                _currentLevel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<BaseEnemy> Enemies
+        {
+            get { return _enemies; }
+            set
+            {
+                if (Equals(value, _enemies)) return;
+                _enemies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void initLevels()
+        {
+            Enemies.CollectionChanged += (sender, args) =>
+            {
+                if (args.Action == NotifyCollectionChangedAction.Add)
+                {
+                    var e = Enemies.LastOrDefault();
+
+                    e.Died += (o, s) => synch.Post(d =>
+                        enemyDestroyedPoint(e), null);
+                        
+                    e.Attack.Hit += (o, p) => synch.Post(
+                        d => ShipHit(this, p.Damage), null);
+                    e.Attack.Added += (o, p) => synch.Post(d =>
+                        EnemyProjectiles.Add(p as BaseEnemyProjectile), null);
+                    e.Attack.Removed += (o, p) => synch.Post(d =>
+                        EnemyProjectiles.Remove(p as BaseEnemyProjectile), null);
+
+                    EnemyAdded(this, args.NewItems[0] as BaseEnemy);
+                }
+                if (args.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    //foreach (var enemy in args.OldItems)
+                    //    foreach (var p in _enemyProjectiles.Where(
+                    //        o => o.Source.Equals(enemy)))
+                    //    {
+                    //        BaseEnemyProjectile p1 = p;
+                    //        p.Expired = true;
+                    //    }
+
+                    EnemyRemoved(this, args.OldItems[0] as BaseEnemy);
+                }
+            };
+        }
+
+
+        public void LoadLevel(int level)
+        {
+            Enemies.Clear();
+            _shipAffects.Clear();
+            _scoring.Scores.Clear();
+
+            if(level == 0)
+                _currentLevel = new Level0(ref _enemies, _ship);
+
+            _currentLevel.StageMessage 
+                += (o, msg) => LevelMessage(this, Tuple.Create(_currentLevel, msg));
+            _currentLevel.IncarnationRestore += (sender, i) => Incarnation+=i;
+            _currentLevel.HealthRestore += (s, e) =>
+            {
+                if (_ship.Health + e >= 100)
+                    _ship.Health = 100;
+                else _ship.Health += e;
+            };
+            _currentLevel.Begin();
+            NewLevel(this, _currentLevel);
+        }
+
+
+    }
+}
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms.VisualStyles;
+using System.Windows.Media;
+using System.Windows.Threading;
+using TrianglesVCircles.Core.Animation;
+using TrianglesVCircles.Core.Animation.RandomMovements.MoveStrategies;
+using TrianglesVCircles.Core.Creeps;
+using TrianglesVCircles.Core.Creeps.Type1;
+using TrianglesVCircles.Core.Levels;
+using TrianglesVCircles.Core.Projectiles;
+using TrianglesVCircles.Core.Projectiles.EnemyProjectiles;
+using TrianglesVCircles.Core.Projectiles.PlayerProjectiles;
+using TrianglesVCircles.Helpers;
+
+namespace TrianglesVCircles.Core
+{
+    partial class GameCore
+    {
+        private ObservableCollection<BaseEnemy> _enemies 
+            = new ObservableCollection<BaseEnemy>();
+        private BaseLevel _currentLevel;
+
+        public event EventHandler<BaseEnemy> EnemyRemoved = delegate { };
+        public event EventHandler<BaseEnemy> EnemyAdded = delegate { };
+        public event EventHandler<BaseLevel> NewLevel = delegate { };
+
+        public BaseLevel CurrentLevel
+        {
+            get { return _currentLevel; }
+            set
+            {
+                if (value == _currentLevel) return;
+                _currentLevel = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ObservableCollection<BaseEnemy> Enemies
+        {
+            get { return _enemies; }
+            set
+            {
+                if (Equals(value, _enemies)) return;
+                _enemies = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private void initLevels()
+        {
+            Enemies.CollectionChanged += (sender, args) =>
+            {
+                if (args.Action == NotifyCollectionChangedAction.Add)
+                {
+                    var e = Enemies.LastOrDefault();
+
+                    e.Attack.Hit += (o, p) => synch.Post(
+                        d => ShipHit(this, p.Damage), null);
+                    e.Attack.Added += (o, p) => synch.Post(d =>
+                        EnemyProjectiles.Add(p as BaseEnemyProjectile), null);
+                    e.Attack.Removed += (o, p) => synch.Post(d =>
+                        EnemyProjectiles.Remove(p as BaseEnemyProjectile), null);
+
+                    EnemyAdded(this, args.NewItems[0] as BaseEnemy);
+                }
+                if (args.Action == NotifyCollectionChangedAction.Remove)
+                {
+                    foreach (var enemy in args.OldItems)
+                        foreach (var p in _enemyProjectiles.Where(
+                            o => o.Source.Equals(enemy)))
+                        {
+                            BaseEnemyProjectile p1 = p;
+                            synch.Post(d => _enemyProjectiles.Remove(p1), null);
+                        }
+
+                    EnemyRemoved(this, args.OldItems[0] as BaseEnemy);
+                }
+            };
+        }
+
+
+        public void LoadLevel(int level)
+        {
+            Enemies.Clear();
+            _shipAffects.Clear();
+            _scoring.Scores.Clear();
+
+            if(level == 0)
+                _currentLevel = new Level0(ref _enemies, _ship);
+
+            _currentLevel.Begin();
+            NewLevel(this, _currentLevel);
+        }
+
+
+    }
+}
+>>>>>>> other

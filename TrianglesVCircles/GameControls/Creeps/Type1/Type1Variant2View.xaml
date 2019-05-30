@@ -1,0 +1,64 @@
+﻿<creeps:BaseEnemyControl x:Class="TrianglesVCircles.GameControls.Creeps.Type1.Type1Variant2View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="ref"
+             xmlns:dim="clr-namespace:TrianglesVCircles"
+             xmlns:creeps="clr-namespace:TrianglesVCircles.GameControls.Creeps">
+    <creeps:BaseEnemyControl.Resources>
+        <Storyboard x:Key="SubtleAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-261.58">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseIn" Power="1.31415926"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="-461.903">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <PowerEase EasingMode="EaseOut" Power="1.314"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </creeps:BaseEnemyControl.Resources>
+    <StackPanel>
+        <StackPanel.RenderTransform>
+            <TranslateTransform
+                X="{Binding XPosition}"
+                Y="{Binding YPosition}" />
+        </StackPanel.RenderTransform>
+        <Grid>
+        <Ellipse x:Name="ellipse"
+            Width="{x:Static dim:Dimensions.EnemyWidth}"
+            Height="{x:Static dim:Dimensions.EnemyHeight}"
+            StrokeThickness="2" RenderTransformOrigin="0.5,0.5" Fill="#5B000000"
+            >
+        	<Ellipse.RenderTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform Angle="-122.071"/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</Ellipse.RenderTransform>
+        	<Ellipse.Stroke>
+        		<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+        			<GradientStop Color="#00000000" Offset="0.604"/>
+        			<GradientStop Color="White" Offset="1"/>
+        		</LinearGradientBrush>
+        	</Ellipse.Stroke>
+        </Ellipse>
+            <TextBlock Text="{Binding Caption, ElementName=ref}" TextAlignment="Center" 
+                   VerticalAlignment="Center" FontSize="24" Foreground="Crimson" 
+                   FontWeight="ExtraBlack"/>
+        </Grid>
+        <TextBlock  
+            Visibility="{Binding ElementName=ref, Path=RemainingLettersVisibility}"
+            x:Name="RemainingLetters"
+            Text="{Binding ElementName=ref, Path=RemaindingLife}" 
+            TextAlignment="Center" VerticalAlignment="Center"
+            FontSize="24" Foreground="DarkSalmon" FontWeight="ExtraBlack"/>
+    </StackPanel>
+
+</creeps:BaseEnemyControl>

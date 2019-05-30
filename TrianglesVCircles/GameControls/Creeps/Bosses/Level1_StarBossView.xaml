@@ -1,0 +1,285 @@
+﻿<creeps:BaseEnemyControl 
+     x:Class="TrianglesVCircles.GameControls.Creeps.Bosses.Level1_StarBossView"
+     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:creeps="clr-namespace:TrianglesVCircles.GameControls.Creeps"
+     mc:Ignorable="d" x:Name="ref" >
+	<creeps:BaseEnemyControl.Resources>
+		<Storyboard x:Key="SubtleAnimation">
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path">
+				<EasingColorKeyFrame KeyTime="0:0:0.6" Value="#FFFF5D00">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+				<EasingColorKeyFrame KeyTime="0:0:5.3" Value="#FFFF5D00">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+				<EasingColorKeyFrame KeyTime="0:0:5.7" Value="sc#1, 1, 0.10946171, 0"/>
+				<EasingColorKeyFrame KeyTime="0:0:8" Value="sc#1, 1, 0.10946171, 0"/>
+				<EasingColorKeyFrame KeyTime="0:0:9.748" Value="sc#1, 1, 0.10946171, 0"/>
+				<EasingColorKeyFrame KeyTime="0:0:12.1" Value="#FFFF5D00">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.3" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.7" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.748" Value="1"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:12.1" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.3" Value="0.586">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:5.7" Value="0.78642613930438388"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:8" Value="0.78642613930438388"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:9.748" Value="0.876">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+				<EasingDoubleKeyFrame KeyTime="0:0:12.1" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="path">
+				<EasingColorKeyFrame KeyTime="0:0:5.3" Value="Black">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+				<EasingColorKeyFrame KeyTime="0:0:5.7" Value="Black"/>
+				<EasingColorKeyFrame KeyTime="0:0:8" Value="Black"/>
+				<EasingColorKeyFrame KeyTime="0:0:9.748" Value="Black">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+				<EasingColorKeyFrame KeyTime="0:0:12.1" Value="#00000000">
+					<EasingColorKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0:0:4.1" Value="-180">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<PowerEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[15].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:0.6" Value="46.6801465027509,129.175431681411"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.7" Value="42.0310793972124,139.704564930336"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="42.0310793972124,139.704564930336"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="42.0310793972124,139.704564930336"/>
+				<EasingPointKeyFrame KeyTime="0:0:7" Value="42.0310793972124,139.704564930336"/>
+				<EasingPointKeyFrame KeyTime="0:0:7.5" Value="51.5701916092026,121.303823586941"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="42.0310793972124,139.704564930336"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="42.0310793972124,139.704564930336"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[5].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:0.6" Value="101.101744465176,25.8470257412426"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.7" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:11.2" Value="107.968589603947,10.2951040708236"/>
+				<EasingPointKeyFrame KeyTime="0:0:11.7" Value="101.596802154286,26.6485769065093"/>
+				<EasingPointKeyFrame KeyTime="0:0:12.1" Value="107.968589603947,10.2951040708236"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[11].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:0.6" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.2" Value="21.3351688629998,64.4746005371968"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.7" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:2.2" Value="19.1911284422962,62.712548246224"/>
+				<EasingPointKeyFrame KeyTime="0:0:4.1" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:7" Value="18.1082313078524,65.4407602695362"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="3.27431682567865,63.6395969541612"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="3.27431682567865,63.6395969541612"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[1].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:0.6" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.2" Value="126.192613418234,85.4107711057732"/>
+				<EasingPointKeyFrame KeyTime="0:0:1.7" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:2.2" Value="133.304622728011,87.1417595946378"/>
+				<EasingPointKeyFrame KeyTime="0:0:4.1" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:7" Value="126.97815001059,83.9622878396583"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:8.6" Value="146.725679607028,86.360072046998"/>
+				<EasingPointKeyFrame KeyTime="0:0:9" Value="127.869465378734,82.4879657161923"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="146.725679607028,86.360072046998"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[17].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:2.2" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:3" Value="83.5591129727588,133.160622081754"/>
+				<EasingPointKeyFrame KeyTime="0:0:4.1" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:6.5" Value="81.4131629878498,127.776617364997"/>
+				<EasingPointKeyFrame KeyTime="0:0:7" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:9" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.4" Value="82.5939382087634,126.851539056054"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="86.360072046998,146.725679607028"/>
+				<EasingPointKeyFrame KeyTime="0:0:10.5" Value="86.7425908082203,126.172371071807"/>
+				<EasingPointKeyFrame KeyTime="0:0:12.1" Value="86.360072046998,146.725679607028"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[7].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:2.2" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:3" Value="67.3700014784156,21.340682889166"/>
+				<EasingPointKeyFrame KeyTime="0:0:4.1" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:5" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:5.7" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:8" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:8.6" Value="69.4266830171028,24.1061090325356"/>
+				<EasingPointKeyFrame KeyTime="0:0:9.748" Value="63.6395969541612,3.27431682567865"/>
+				<EasingPointKeyFrame KeyTime="0:0:10.5" Value="63.4854217067442,21.8406688649256"/>
+				<EasingPointKeyFrame KeyTime="0:0:12.1" Value="63.6395969541612,3.27431682567865"/>
+			</PointAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(Path.Data).(PathGeometry.Figures)[0].(PathFigure.Segments)[13].(LineSegment.Point)" Storyboard.TargetName="path">
+				<EasingPointKeyFrame KeyTime="0:0:10.5" Value="10.2951040708236,107.968589603947"/>
+				<EasingPointKeyFrame KeyTime="0:0:11.2" Value="29.9019635157431,98.7785009044858"/>
+				<EasingPointKeyFrame KeyTime="0:0:12.1" Value="10.2951040708236,107.968589603947"/>
+			</PointAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:12.8" Value="720"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+	</creeps:BaseEnemyControl.Resources>
+	<creeps:BaseEnemyControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource SubtleAnimation}"/>
+		</EventTrigger>
+	</creeps:BaseEnemyControl.Triggers>
+    <StackPanel>
+        <StackPanel.RenderTransform>
+            <TranslateTransform
+				X="{Binding XPosition}"
+				Y="{Binding YPosition}" />
+        </StackPanel.RenderTransform>
+        <Grid>
+        <Path x:Name="path" StrokeLineJoin="Round" 
+    		Width="150" Height="150" StrokeThickness="2" 
+              RenderTransformOrigin="0.5,0.5" Fill="#1ACF7100">
+        	<Path.LayoutTransform>
+        		<TransformGroup>
+        			<ScaleTransform/>
+        			<SkewTransform/>
+        			<RotateTransform/>
+        			<TranslateTransform/>
+        		</TransformGroup>
+        	</Path.LayoutTransform>
+        	<Path.Data>
+        		<PathGeometry FillRule="Nonzero">
+        			<PathFigure IsClosed="True" StartPoint="126.34961439551,126.34961439551">
+        				<LineSegment Point="114.383955917449,95.0671317626446"/>
+        				<LineSegment Point="146.725679607028,86.360072046998"/>
+        				<LineSegment Point="118.657592477641,68.0851350768798"/>
+        				<LineSegment Point="139.704564930336,42.0310793972124"/>
+        				<LineSegment Point="106.255467746536,43.744201254623"/>
+        				<LineSegment Point="107.968589603947,10.2951040708236"/>
+        				<LineSegment Point="81.9145339242794,31.3420765235179"/>
+        				<LineSegment Point="63.6395969541612,3.27431682567865"/>
+        				<LineSegment Point="54.9325372385146,35.6157130837097"/>
+        				<LineSegment Point="23.650054605649,23.650054605649"/>
+        				<LineSegment Point="35.6157130837097,54.9325372385146"/>
+        				<LineSegment Point="3.27431682567865,63.6395969541612"/>
+        				<LineSegment Point="31.3420765235179,81.9145339242794"/>
+        				<LineSegment Point="10.2951040708236,107.968589603947"/>
+        				<LineSegment Point="43.7445286861707,106.255467746536"/>
+        				<LineSegment Point="42.0310793972124,139.704564930336"/>
+        				<LineSegment Point="68.0851350768798,118.657592477641"/>
+        				<LineSegment Point="86.360072046998,146.725679607028"/>
+        				<LineSegment Point="95.0671317626446,114.383955917449"/>
+        				<LineSegment Point="126.34961439551,126.34961439551"/>
+        			</PathFigure>
+        		</PathGeometry>
+        	</Path.Data>
+    		<Path.RenderTransform>
+    			<TransformGroup>
+    				<ScaleTransform/>
+    				<SkewTransform/>
+    				<RotateTransform/>
+    				<TranslateTransform/>
+    			</TransformGroup>
+    		</Path.RenderTransform>
+    		<Path.Stroke>
+    			<RadialGradientBrush>
+    				<GradientStop Color="sc#0.895, 0, 0, 0" Offset="0.059"/>
+    				<GradientStop Color="White" Offset="0"/>
+    			</RadialGradientBrush>
+    		</Path.Stroke>
+    	</Path>
+        <Ellipse x:Name="ellipse" 
+				StrokeThickness="2"
+				Height="85"
+				Width="85" RenderTransformOrigin="0.5,0.5" Fill="#5BC50000" >
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+            <Ellipse.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#5B000000" Offset="0"/>
+                    <GradientStop Color="#FFFF6800" Offset="0.5"/>
+                    <GradientStop Color="#5B000000" Offset="1"/>
+                    <GradientStop Color="#88464646" Offset="0.862"/>
+                    <GradientStop Color="#91555555" Offset="0.167"/>
+                </LinearGradientBrush>
+            </Ellipse.Stroke>
+        </Ellipse>
+        <TextBlock 
+            x:Name="Caption"
+            Text="{Binding ElementName=ref, Path=Caption}"
+            TextAlignment="Center" VerticalAlignment="Center"
+            FontSize="24" Foreground="#FF22FA03" FontWeight="ExtraBlack"/>
+    </Grid>
+    <TextBlock  
+        Visibility="{Binding ElementName=ref, Path=RemainingLettersVisibility}"
+        x:Name="RemainingLetters"
+        Text="{Binding ElementName=ref, Path=RemaindingLife}" 
+        TextAlignment="Center" VerticalAlignment="Center"
+        FontSize="24" Foreground="DarkSalmon" FontWeight="ExtraBlack"/>
+    </StackPanel>
+</creeps:BaseEnemyControl>

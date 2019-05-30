@@ -1,0 +1,207 @@
+﻿<UserControl x:Class="TrianglesVCircles.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:trianglesVCircles="clr-namespace:TrianglesVCircles"
+             xmlns:gameControls="clr-namespace:TrianglesVCircles.GameControls"
+             xmlns:viewModel="clr-namespace:TrianglesVCircles.ViewModel"
+             xmlns:projectiles="clr-namespace:TrianglesVCircles.Core.Projectiles"
+             xmlns:projectileViews="clr-namespace:TrianglesVCircles.GameControls.ProjectileViews"
+             xmlns:backgrounds="clr-namespace:TrianglesVCircles.GameControls.Backgrounds"
+             xmlns:affects="clr-namespace:TrianglesVCircles.GameControls.Affects"
+             mc:Ignorable="d" x:Name="ref"
+             DataContext="{DynamicResource vm}"
+             d:DesignHeight="{x:Static trianglesVCircles:Dimensions.StageHeight}" 
+             d:DesignWidth="{x:Static trianglesVCircles:Dimensions.StageHeight}"
+             MouseRightButtonDown="GameView_OnMouseRightButtonDown">
+    <UserControl.Resources>
+        <viewModel:GameViewVm x:Key="vm" />
+        <Storyboard x:Key="LevelDisplayAnimation">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LevelDisplay">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<PowerEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        		<EasingDoubleKeyFrame KeyTime="0:0:1.9" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:2.4" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<PowerEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="LevelMessageAnimation">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="LevelMessage">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:2.7" Value="1">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<QuadraticEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        		<EasingDoubleKeyFrame KeyTime="0:0:3.4" Value="0">
+        			<EasingDoubleKeyFrame.EasingFunction>
+        				<PowerEase EasingMode="EaseOut"/>
+        			</EasingDoubleKeyFrame.EasingFunction>
+        		</EasingDoubleKeyFrame>
+        	</DoubleAnimationUsingKeyFrames>
+			
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid> 
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" 
+              Height="{x:Static trianglesVCircles:Dimensions.BottomStageDetailHeight}">
+            <TextBlock 
+                Background="Transparent" 
+                Foreground="#8BFFFFFF" 
+                FontSize="26"
+                Height="{x:Static trianglesVCircles:Dimensions.BottomStageDetailHeight}"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                FontFamily="/TrianglesVCircles;component/GameControls/Fonts/#Hemi Head Rg">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat="Score: {0:000000000}">
+                        <Binding Path="Game.Scoring.TotalScore" />
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
+            <StackPanel Grid.Row="2"
+                     Margin="5,0,0,10"
+                        HorizontalAlignment="Left">
+                <TextBlock
+                    Foreground="White" FontSize="20" 
+                    FontFamily="/TrianglesVCircles;component/GameControls/Fonts/#Good Times Rg">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="X{0}">
+                            <Binding Path="Game.Incarnation" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <ProgressBar 
+                    Width="150" Height="20"  
+                    VerticalAlignment="Bottom" 
+                    HorizontalAlignment="Left" 
+                    Value="{Binding Game.Ship.Health}"/>
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right">
+                <ItemsControl ItemsSource="{Binding Game.ShipAffects}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock 
+                x:Name="LevelDisplay" 
+                Background="Transparent"
+                Foreground="White"
+                FontSize="40"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontFamily="/TrianglesVCircles;component/GameControls/Fonts/#Good Times Rg" 
+                Opacity="0" />
+            <TextBlock 
+                x:Name="LevelMessage"
+                Background="Transparent"
+                Foreground="White"
+                FontSize="25"
+                TextAlignment="Center"
+                TextWrapping="Wrap"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                FontFamily="/TrianglesVCircles;component/GameControls/Fonts/#Good Times Rg" Opacity="0" />
+        </StackPanel>
+
+        <Canvas x:Name="Stage" Grid.Row="0">
+            <ItemsControl
+                Name="EnemyProjectiles"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                ItemsSource="{Binding Game.EnemyProjectiles}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            
+            <ItemsControl
+                Name="PlayerProjectiles"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                ItemsSource="{Binding Game.PlayerProjectiles}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl> 
+            
+            <ItemsControl
+                Name="EnemiesContainer"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" 
+                ItemsSource="{Binding Game.Enemies}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+          
+            <gameControls:Ship >
+                <gameControls:Ship.RenderTransform>
+                    <TranslateTransform X="{Binding Game.Ship.XPosition}"
+                                        Y="{Binding Game.Ship.YPosition}"/>
+                </gameControls:Ship.RenderTransform>
+            </gameControls:Ship>
+        </Canvas>
+
+        <StackPanel x:Name="Gameover" VerticalAlignment="Center" Grid.RowSpan="2"
+                    Background="#A1000000" Visibility="Collapsed">
+            <Grid>
+                <TextBlock VerticalAlignment="Bottom" Foreground="#7EFFFFFF" 
+						   FontSize="75" FontStretch="UltraExpanded"
+						   FontWeight="ExtraBold"
+						   HorizontalAlignment="Center" 
+						   Text="Game Over" Margin="0,15,0,15" />
+            </Grid>
+
+            <!--<Button Tag="Restart Level" Width="175"
+                    Command="{Binding Path=RestartGameCommand, ElementName=ref}"/>
+            <Button Tag="Restart Game" Width="175"
+                    Command="{Binding Path=RestartLevelCommand, ElementName=ref}"/>
+            <Button Tag="Main Menu" Width="175"
+                    Command="{Binding Path=MainMenuCommand, ElementName=ref}"/>-->
+            <Button Tag="Close Game" Width="175"
+                    Command="{Binding Path=CloseGameCommand, ElementName=ref}"/>
+        </StackPanel >
+
+        <StackPanel x:Name="Cheat" VerticalAlignment="Center" Grid.RowSpan="2"
+                    Background="#A1000000" Visibility="Collapsed">
+            <Grid>
+                <TextBlock VerticalAlignment="Bottom" Foreground="#7EFFFFFF" 
+						   FontSize="75" FontStretch="UltraExpanded"
+						   FontWeight="ExtraBold"
+						   HorizontalAlignment="Center" 
+						   Text="Cheat Catalog" Margin="0,15,0,15" />
+            </Grid>
+            <Button Tag="Full Health" Width="175"
+                    Command="{Binding Path=FullHealthCommand, ElementName=ref}"/>
+            <Button Tag="Add Life" Width="175"
+                    Command="{Binding Path=AddLifeCommand, ElementName=ref}"/>
+            <Button Tag="Skip Level" Width="175"
+                    Command="{Binding Path=SkipLevelCommand, ElementName=ref}"/>
+            <Button Tag="Close" Width="175" Click="ButtonBase_OnClick"/>
+        </StackPanel >
+
+    </Grid>
+</UserControl>

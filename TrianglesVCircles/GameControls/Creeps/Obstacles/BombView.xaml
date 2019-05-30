@@ -1,0 +1,168 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="TrianglesVCircles.UserControl1"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480">
+	<UserControl.Resources>
+		<Storyboard x:Key="SubtleAnimation">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<QuadraticEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<QuadraticEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="path">
+				<EasingColorKeyFrame KeyTime="0:0:0.8" Value="#B2FFFFFF">
+					<EasingColorKeyFrame.EasingFunction>
+						<QuadraticEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Color)" Storyboard.TargetName="path">
+				<EasingColorKeyFrame KeyTime="0:0:0.8" Value="#66000000">
+					<EasingColorKeyFrame.EasingFunction>
+						<QuadraticEase EasingMode="EaseInOut"/>
+					</EasingColorKeyFrame.EasingFunction>
+				</EasingColorKeyFrame>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[2].(GradientStop.Offset)" Storyboard.TargetName="path">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1">
+					<EasingDoubleKeyFrame.EasingFunction>
+						<QuadraticEase EasingMode="EaseInOut"/>
+					</EasingDoubleKeyFrame.EasingFunction>
+				</EasingDoubleKeyFrame>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+				<EasingColorKeyFrame KeyTime="0" Value="#99FFFFFF"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0" Value="330.779"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0" Value="6.146"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.877"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.859"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="115.804"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-4.699"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="-20.473"/>
+			</DoubleAnimationUsingKeyFrames>
+			<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse1">
+				<EasingColorKeyFrame KeyTime="0" Value="#99FFFFFF"/>
+			</ColorAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.StrokeThickness)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ellipse1">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.773"/>
+			</DoubleAnimationUsingKeyFrames>
+			<PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ellipse1">
+				<EasingPointKeyFrame KeyTime="0" Value="0.61,0.486"/>
+			</PointAnimationUsingKeyFrames>
+		</Storyboard>
+	</UserControl.Resources>
+	<UserControl.Triggers>
+		<EventTrigger RoutedEvent="FrameworkElement.Loaded">
+			<BeginStoryboard Storyboard="{StaticResource SubtleAnimation}"/>
+		</EventTrigger>
+	</UserControl.Triggers>
+
+	<Grid x:Name="LayoutRoot">
+		<Path x:Name="path" Data="M51.514431,2 L68.264015,26.976887 80.478881,18.737854 90.801406,34.04163 94.465477,32.514965 C111.04166,25.907133 129.1015,22.277187 148,22.277191 228.63357,22.277187 294,88.358345 294,169.87358 294,251.38881 228.63357,317.47 148,317.47 67.366424,317.47 1.999999,251.38881 2,169.87358 1.999999,131.98174 16.124359,97.424881 39.340938,71.290176 L41.144363,69.311104 29.998786,52.787109 41.899841,44.759747 25.115036,19.730339 z" Fill="Black" HorizontalAlignment="Left" Height="319.47" Margin="180,118.53,0,0" Stretch="Fill" StrokeThickness="5" VerticalAlignment="Top" Width="296">
+			<Path.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+					<GradientStop Color="#B2000000" Offset="1"/>
+					<GradientStop Color="#66000000"/>
+					<GradientStop Color="#B2FFFFFF"/>
+				</LinearGradientBrush>
+			</Path.Stroke>
+		</Path>
+		<Path Data="M214,129 L206.5,116.5 198.33333,112.33333 191.33381,113.66698 185.83433,117.00024 179.66829,117.00024 171.33494,114.66696 167.5021,110.50037 166.16883,105.66714 164.16858,99.666839 162.75162,91.999798 168.75143,90.499786 170.50137,96.999822 172.25132,103.24986 174.50125,107.49988 180.25107,109.24989 186.00088,107.24988 194.25062,106.49988 201.50039,105.99987 210.7501,111.2499 215.24996,115.74993 217.49988,121.99996 220.24979,124.99998 z" Fill="#FF813500" HorizontalAlignment="Left" Height="39.5" Margin="162.75,90.5,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="58.5"/>
+		<Path Data="M217.79167,121.75 C217.31878,123.87797 217.70833,126.2738 217.70833,128.5" Fill="#FF813500" HorizontalAlignment="Left" Height="7.75" Margin="217.557,121.75,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1.235"/>
+		<Path Data="M216.70833,119.16667 C215.79321,120.99692 215.48014,123.21739 214.625,125.125 214.17081,126.1382 213.83123,127.06061 213.70833,128.16667" Fill="#FF813500" HorizontalAlignment="Left" Height="10" Margin="213.708,119.167,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4"/>
+		<Path Data="M215.125,116.16667 C214.03868,117.61509 213.14739,118.84324 212.875,120.75 212.8018,121.26243 212.86166,121.76004 212.79167,122.25 212.64373,123.28558 212.35329,123.55297 211.66667,124.25" Fill="#FF813500" HorizontalAlignment="Left" Height="9.083" Margin="211.667,116.167,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4.458"/>
+		<Path Data="M212.33333,112.29167 C211.69993,112.88988 211.27657,113.6256 210.79167,114.375 210.59166,114.68409 210.39767,114.82229 210.33333,115.20833 210.26596,115.61256 210.34199,115.97402 210.20833,116.375 209.81751,117.54746 209.4892,118.70771 208.875,119.75" Fill="#FF813500" HorizontalAlignment="Left" Height="8.458" Margin="208.875,112.292,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4.458"/>
+		<Path Data="M208.20833,109.45833 C208.13657,111.32406 207.66442,113.14523 207.45833,115 207.35385,115.94031 207.51243,115.92255 207.04167,116.66667" Fill="#FF813500" HorizontalAlignment="Left" Height="8.209" Margin="207.042,109.458,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="2.166"/>
+		<Path Data="M204.83333,108.33333 C204.83333,110.78807 204.83537,113.22048 204.66667,115.66667" Fill="#FF813500" HorizontalAlignment="Left" Height="8.334" Margin="204.667,108.333,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="1.166"/>
+		<Path Data="M201.75,106.08333 C199.50583,108.75022 201.75,111.37857 201.75,114 201.80556,114 201.86111,114 201.91667,114" Fill="#FF813500" HorizontalAlignment="Left" Height="8.917" Margin="200.75,106.083,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="2.167"/>
+		<Path Data="M196.00015,106.49955 C196.00015,110.37139 195.17199,109.8547 198.55367,112.50521" Fill="#FF813500" HorizontalAlignment="Left" Height="7.006" Margin="195.91,106.5,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="3.644"/>
+		<Path Data="M189.75,107.25 C189.75,110.29599 191.74664,110.93334 194.00039,113.2497" Fill="#FF813500" HorizontalAlignment="Left" Height="7" Margin="189.75,107.25,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="5.25"/>
+		<Path Data="M183.49999,108.0004 C185.70696,111.07097 186.93392,112.07629 189.91695,114.08306" Fill="#FF813500" HorizontalAlignment="Left" Height="7.083" Margin="183.5,108,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="7.417"/>
+		<Path Data="M179.7344,109.36455 C181.83371,113.08297 181.91704,114.08299 184.96505,115.59625 185.99401,116.10711 185.94593,116.03401 187.14732,116.2317" Fill="#FF813500" HorizontalAlignment="Left" Height="7.867" Margin="179.734,109.365,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="8.413"/>
+		<Path Data="M174.16667,107.08333 C175.1784,111.2989 178.12231,113.46733 180.66664,116.83367" Fill="#FF813500" HorizontalAlignment="Left" Height="10.75" Margin="174.167,107.083,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="7.5"/>
+		<Path Data="M173.167,105.24967 C173.167,107.97665 172.25,109.07485 172.25,111.83333 172.25,113.40922 173.20364,114.57297 173.91699,115.99966" Fill="#FF813500" HorizontalAlignment="Left" Height="11.75" Margin="171.833,104.333,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="2.667"/>
+		<Path Data="M171.58301,101.66695 C170.30282,103.68829 168.41667,105.12639 168.41667,107.75 168.41667,108.99616 168.38861,110.09395 168.16667,111.16667" Fill="#FF813500" HorizontalAlignment="Left" Height="10.5" Margin="168.167,101.667,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="4.416"/>
+		<Path Data="M170.83333,97.583333 C170.64257,99.87252 167.194,101.96912 165.9163,104.00034" Fill="#FF813500" HorizontalAlignment="Left" Height="7.417" Margin="165.917,97.583,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="5.916"/>
+		<Path Data="M170.25,95.166667 C166.59576,96.384746 166.37307,98.02309 164.33333,100.91667" Fill="#FF813500" HorizontalAlignment="Left" Height="6.75" Margin="164.333,95.167,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="6.917"/>
+		<Path Data="M169.41667,92.333333 C166.28735,93.960578 164.52007,92.763591 163.58333,96.666667" Fill="#FF813500" HorizontalAlignment="Left" Height="5.334" Margin="163.583,92.333,0,0" Stretch="Fill" Stroke="Black" VerticalAlignment="Top" Width="6.834"/>
+		<Path x:Name="path1" Data="M166.33333,90.333333 L157.16699,108.83367 157.83335,94.833751 154.16655,98.500484 155.49963,91.167018 140.16532,88.833642 153.16598,85.167302 148.49896,81.16691 153.8327,80.49989 150.16575,62.166056 157.49965,75.832864 158.16637,67.165897 160.49988,73.49945 167.50042,57.498896 166.16698,72.832761 169.83392,68.165933 168.83417,73.832795 184.50221,69.165967 173.50125,77.499589 180.1685,77.166244 171.16771,80.166348 185.16894,83.833141 170.83412,84.166486 177.16797,91.500073&#xD;&#xA; z" Fill="#FFE4D5AB" HorizontalAlignment="Left" Height="52.333" Margin="139.167,58.5,0,0" Stretch="Fill" Stroke="#FFFFAE00" VerticalAlignment="Top" Width="46" StrokeThickness="2" RenderTransformOrigin="0.5,0.5">
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Path.RenderTransform>
+		</Path>
+		<Path Data="M421,84" Fill="#FFE4D5AB" HorizontalAlignment="Left" Height="2" Margin="420,83,0,0" Stretch="Fill" Stroke="#FFFFAE00" StrokeThickness="2" VerticalAlignment="Top" Width="2"/>
+		<Path x:Name="ellipse" Fill="Black" HorizontalAlignment="Left" StrokeThickness="5" VerticalAlignment="Top" Data="M218.19085,2.5 L219.24289,4.1853409 C232.1965,25.50412 239.65594,50.530418 239.65594,77.298973 239.65594,155.17112 176.52809,218.29897 98.655941,218.29897 62.15337,218.29897 28.890514,204.42809 3.8507233,181.66973 L2.5,180.41233 2.696743,180.51647 C23.467609,191.18951 47.006123,197.21108 71.946537,197.21108 155.95637,197.21108 224.05978,128.88868 224.05978,44.608727 224.05978,30.123108 222.04794,16.108894 218.28927,2.831955 z" Height="220.799" Margin="-97.656,210.701,0,0" RenderTransformOrigin="0.407406651260488,0.350087557038887" Stretch="Fill" Width="242.156">
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Path.RenderTransform>
+			<Path.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+					<GradientStop Color="#B2000000" Offset="1"/>
+					<GradientStop Color="#66000000"/>
+					<GradientStop Color="#B2FFFFFF"/>
+				</LinearGradientBrush>
+			</Path.Stroke>
+		</Path>
+		<Ellipse x:Name="ellipse1" Fill="Black" HorizontalAlignment="Left" Height="96" Margin="117,154,0,0" StrokeThickness="5" VerticalAlignment="Top" Width="143" RenderTransformOrigin="0.5,0.5">
+			<Ellipse.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Ellipse.RenderTransform>
+			<Ellipse.Stroke>
+				<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+					<GradientStop Color="#B2000000" Offset="1"/>
+					<GradientStop Color="#66000000"/>
+					<GradientStop Color="#B2FFFFFF"/>
+				</LinearGradientBrush>
+			</Ellipse.Stroke>
+		</Ellipse>
+	</Grid>
+</UserControl>

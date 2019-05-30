@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:bosses="clr-namespace:TrianglesVCircles.Core.Creeps.Bosses"
+                    xmlns:bosses1="clr-namespace:TrianglesVCircles.GameControls.Creeps.Bosses">
+    <DataTemplate DataType="{x:Type bosses:Level0_CoinBoss}">
+        <bosses1:Level0_CoinBossView Model="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type bosses:Level1_StarBoss}">
+        <bosses1:Level1_StarBossView Model="{Binding}"/>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,44 @@
+﻿<creeps:BaseEnemyControl x:Class="TrianglesVCircles.GameControls.Creeps.Type1.Type1Variant3View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" x:Name="ref"
+             xmlns:dim="clr-namespace:TrianglesVCircles"
+             xmlns:creeps="clr-namespace:TrianglesVCircles.GameControls.Creeps">
+    <creeps:BaseEnemyControl.Resources>
+        <Storyboard x:Key="SubtleAnimation" AutoReverse="True">
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Stroke).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0:0:1.2" Value="#D8FFFFFF">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <QuadraticEase EasingMode="EaseIn"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </creeps:BaseEnemyControl.Resources>
+    <StackPanel>
+        <StackPanel.RenderTransform>
+            <TranslateTransform
+                X="{Binding XPosition}"
+                Y="{Binding YPosition}" />
+        </StackPanel.RenderTransform>
+        <Grid>
+        <Ellipse x:Name="ellipse"
+            Width="{x:Static dim:Dimensions.EnemyWidth}"
+            Height="{x:Static dim:Dimensions.EnemyHeight}"
+            StrokeThickness="2" RenderTransformOrigin="0.5,0.5" Fill="#5B000000" Stroke="Black"
+            />
+        <TextBlock Text="{Binding Caption, ElementName=ref}" 
+                   TextAlignment="Center" VerticalAlignment="Center"
+                   FontSize="24" Foreground="Crimson" 
+                   FontWeight="ExtraBlack"/>
+    </Grid>
+        <TextBlock  
+            Visibility="{Binding ElementName=ref, Path=RemainingLettersVisibility}"
+            x:Name="RemainingLetters"
+            Text="{Binding ElementName=ref, Path=RemaindingLife}" 
+            TextAlignment="Center" VerticalAlignment="Center"
+            FontSize="24" Foreground="DarkSalmon" FontWeight="ExtraBlack"/>
+    </StackPanel>
+</creeps:BaseEnemyControl>

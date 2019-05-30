@@ -1,0 +1,57 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:projectileViews="clr-namespace:TrianglesVCircles.GameControls.ProjectileViews"
+                    xmlns:enemyProjectiles="clr-namespace:TrianglesVCircles.Core.Projectiles.EnemyProjectiles"
+                    xmlns:enemyProjectiles1="clr-namespace:TrianglesVCircles.GameControls.ProjectileViews.EnemyProjectiles">
+    <Style x:Key="MissileProjectileStyle" 
+           TargetType="{x:Type projectileViews:MissileProjectileControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+               <ControlTemplate TargetType="{x:Type projectileViews:MissileProjectileControl}">
+                    <Grid x:Name="grdMain">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{TemplateBinding XPosition}"
+                                                    Y="{TemplateBinding YPosition}"/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Path Data="M9.5,15 C9.5,18.465687 13.633221,24.141825 8.4931448,24.141825 5.1212114,24.141825 6.4739722,27.087981 5.064249,27.087981 3.5711466,27.087981 5.0641246,23.549504 1.3650563,23.549504 -5.2100962,23.549504 0.5,18.197021 0.5,15 0.5,6.9918711 2.0060759,3.6875 5,0.5 7.682999,3.4106527 9.5,6.9918711 9.5,15 z" 
+                          Fill="White" Stretch="Fill" Stroke="Black" 
+                          StrokeThickness="1" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource MissileProjectileStyle}" 
+           TargetType="{x:Type projectileViews:MissileProjectileControl}" />
+    
+    
+    <Style x:Key="SimpleDotProjectileStyle" 
+           TargetType="{x:Type enemyProjectiles1:DotProjectileControl}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type enemyProjectiles1:DotProjectileControl}">
+                    <Canvas x:Name="grdMain">
+                        <Canvas.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding XPosition}"
+                                                    Y="{Binding YPosition}"/>
+                            </TransformGroup>
+                        </Canvas.RenderTransform>
+                        <Ellipse Width="10" 
+                                 Height="10"
+                                 Fill="White" Stretch="Fill" 
+                                 Stroke="White" StrokeThickness="1" />
+                    </Canvas>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style BasedOn="{StaticResource SimpleDotProjectileStyle}" 
+           TargetType="{x:Type enemyProjectiles1:DotProjectileControl}" />
+
+</ResourceDictionary>
+    

@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:projectiles="clr-namespace:TrianglesVCircles.Core.Projectiles"
+                    xmlns:projectileViews="clr-namespace:TrianglesVCircles.GameControls.ProjectileViews"
+                    xmlns:playerProjectiles="clr-namespace:TrianglesVCircles.Core.Projectiles.PlayerProjectiles"
+                    xmlns:enemyProjectiles="clr-namespace:TrianglesVCircles.Core.Projectiles.EnemyProjectiles"
+                    xmlns:enemyProjectiles1="clr-namespace:TrianglesVCircles.GameControls.ProjectileViews.EnemyProjectiles">
+    <DataTemplate DataType="{x:Type playerProjectiles:MissileProjectile}">
+        <projectileViews:MissileProjectileControl Data="{Binding}" />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type enemyProjectiles:DotProjectile}">
+        <enemyProjectiles1:DotProjectileControl Data="{Binding}" />
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{183A7007-5B25-4F91-8A8D-0E28A7C75D82}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TrianglesVCircles</RootNamespace>
+    <AssemblyName>TrianglesVCircles</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.50716.0</ExpressionBlendVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logosmall.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable.Surrogate, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.Surrogate.1.1.2\lib\net45\System.Collections.Immutable.Surrogate.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Catalog.cs" />
+    <Compile Include="Controls.cs" />
+    <Compile Include="Core\Affects\BombEnemyAffect.cs" />
+    <Compile Include="Core\Affects\PlayerCannotAttackAffect.cs" />
+    <Compile Include="Core\Affects\WrongButtonAffect.cs" />
+    <Compile Include="Core\Animation\IMovable.cs" />
+    <Compile Include="Core\Animation\RandomMovements\IRandomMovable.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\VerticalOscillation.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\VerticalWandering.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\Wandering.cs" />
+    <Compile Include="Core\Animation\TweenAnimator.cs" />
+    <Compile Include="Core\Creeps\Bosses\Level0_CoinBoss.cs" />
+    <Compile Include="Core\Creeps\Bosses\Level1_StarBoss.cs" />
+    <Compile Include="Core\Creeps\Type2\Type2Variant1.cs" />
+    <Compile Include="Core\Creeps\Type2\Type2Variant2.cs" />
+    <Compile Include="Core\Creeps\Type2\Type2Variant3.cs" />
+    <Compile Include="Core\Creeps\Type2\Type2Variant4.cs" />
+    <Compile Include="Core\Creeps\Type3\Type3Variant2.cs" />
+    <Compile Include="Core\Creeps\Type3\Type3Variant3.cs" />
+    <Compile Include="Core\Creeps\Type3\Type3Variant4.cs" />
+    <Compile Include="Core\Creeps\Type3\Type3Variant1.cs" />
+    <Compile Include="Core\GameCore.GameEnd.cs" />
+    <Compile Include="Core\Levels\BaseLevel.cs" />
+    <Compile Include="Core\Levels\Level0.cs" />
+    <Compile Include="Core\Levels\Level1.cs" />
+    <Compile Include="Core\Levels\Level2.cs" />
+    <Compile Include="Core\Projectiles\Attacks\IAttackable.cs" />
+    <Compile Include="Core\Projectiles\Attacks\BaseAttack.cs" />
+    <Compile Include="Core\Projectiles\Attacks\LinearDirect.cs" />
+    <Compile Include="Core\Creeps\BasicCircle.cs" />
+    <Compile Include="Core\Creeps\BaseEnemy.cs" />
+    <Compile Include="Core\Creeps\RandomMovements.cs" />
+    <Compile Include="Core\Creeps\Type1\Type1Variant1.cs" />
+    <Compile Include="Core\Creeps\Type1\Type1Variant1_1.cs" />
+    <Compile Include="Core\Creeps\Type1\Type1Variant2.cs" />
+    <Compile Include="Core\EnumGameStates.cs" />
+    <Compile Include="Core\GameCore.Affects.cs" />
+    <Compile Include="Core\GameCore.cs" />
+    <Compile Include="Core\GameCore.Level.cs" />
+    <Compile Include="Core\GameCore.Movements.cs" />
+    <Compile Include="Core\GameCore.ProjectilesAndCollisons.cs" />
+    <Compile Include="Core\GameCore.Scoring.cs" />
+    <Compile Include="Core\GameCore.States.cs" />
+    <Compile Include="Core\Affects\BaseAffects.cs" />
+    <Compile Include="Core\Projectiles\Attacks\LinearScatter.cs" />
+    <Compile Include="Core\Projectiles\Attacks\SingleArc.cs" />
+    <Compile Include="Core\Projectiles\Attacks\Spiral.cs" />
+    <Compile Include="Core\Projectiles\BaseProjectile.cs" />
+    <Compile Include="Core\Projectiles\Curvature\ArcCurvature.cs" />
+    <Compile Include="Core\Projectiles\Curvature\BaseCurvature.cs" />
+    <Compile Include="Core\Projectiles\Curvature\ICurvature.cs" />
+    <Compile Include="Core\Projectiles\Curvature\LinearCurvature.cs" />
+    <Compile Include="Core\Projectiles\EnemyProjectiles\BaseEnemyProjectile.cs" />
+    <Compile Include="Core\Projectiles\EnemyProjectiles\DotProjectile.cs" />
+    <Compile Include="Core\Projectiles\EnumProjectileTypes.cs" />
+    <Compile Include="Core\Projectiles\IProjectile.cs" />
+    <Compile Include="Core\Projectiles\PlayerProjectiles\MissileProjectile.cs" />
+    <Compile Include="Core\Creeps\Type1\Type1Variant3.cs" />
+    <Compile Include="Core\Scoring\EnemyWorth.cs" />
+    <Compile Include="Core\Scoring\ScoreEntry.cs" />
+    <Compile Include="Core\Scoring\ScoreSystem.cs" />
+    <Compile Include="Core\Ship\ShipCore.cs" />
+    <Compile Include="Dimensions.cs" />
+    <Compile Include="GameControls\Affects\BaseAffectControl.cs" />
+    <Compile Include="GameControls\Affects\WrongButtonAffectView.xaml.cs">
+      <DependentUpon>WrongButtonAffectView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Backgrounds\BackgroundControl.xaml.cs">
+      <DependentUpon>BackgroundControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Backgrounds\IBackground.cs" />
+    <Compile Include="GameControls\Backgrounds\Level0.xaml.cs">
+      <DependentUpon>Level0.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Backgrounds\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\BaseEnemyControl.cs" />
+    <Compile Include="GameControls\Creeps\BasicCircleView.xaml.cs">
+      <DependentUpon>BasicCircleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Bosses\Level0_CoinBossView.xaml.cs">
+      <DependentUpon>Level0_CoinBossView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Bosses\Level1_StarBossView.xaml.cs">
+      <DependentUpon>Level1_StarBossView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\CreepSelector.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\IMoveStrategy.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\PolarMovements.cs" />
+    <Compile Include="Core\Animation\RandomMovements\MoveStrategies\RangedMovements.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\BackEasing.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Bounce.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Circular.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Cubic.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Elastic.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Exponential.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\IEasing.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Linear.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Quadratic.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Quartic.cs" />
+    <Compile Include="Core\Animation\Tween\Easing\Quintic.cs" />
+    <Compile Include="Core\Animation\RandomMovements\RandomDestination.cs" />
+    <Compile Include="Core\Animation\RandomMovements\RandomMover.cs" />
+    <Compile Include="Core\Animation\Tween\Tweening.cs" />
+    <Compile Include="GameControls\Creeps\Obstacles\NinjaStarView.xaml.cs">
+      <DependentUpon>NinjaStarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Obstacles\BombView.xaml.cs">
+      <DependentUpon>BombView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type1\Type1Variant1View.xaml.cs">
+      <DependentUpon>Type1Variant1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type1\Type1Variant1_1View.xaml.cs">
+      <DependentUpon>Type1Variant1_1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type1\Type1Variant2View.xaml.cs">
+      <DependentUpon>Type1Variant2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type1\Type1Variant3View.xaml.cs">
+      <DependentUpon>Type1Variant3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type2\Type2Variant1View.xaml.cs">
+      <DependentUpon>Type2Variant1View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type2\Type2Variant2View.xaml.cs">
+      <DependentUpon>Type2Variant2View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type2\Type2Variant3View.xaml.cs">
+      <DependentUpon>Type2Variant3View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type2\Type2Variant4View.xaml.cs">
+      <DependentUpon>Type2Variant4View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type3\Type3Variant1_TrebleNotes.xaml.cs">
+      <DependentUpon>Type3Variant1_TrebleNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Creeps\Type3\TYpe3Variant2_ImageQuestions.xaml.cs">
+      <DependentUpon>TYpe3Variant2_ImageQuestions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\EnumPlayStates.cs" />
+    <Compile Include="GameControls\ProjectileViews\EnemyProjectiles\DotProjectileControl.cs" />
+    <Compile Include="GameControls\ProjectileViews\EnemyProjectiles\InvertedBoolToVisibilityConverter.cs" />
+    <Compile Include="GameControls\ProjectileViews\MissileProjectileControl.cs" />
+    <Compile Include="GameControls\Ship.xaml.cs">
+      <DependentUpon>Ship.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Sound\SoundControl.xaml.cs">
+      <DependentUpon>SoundControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Story\CastleInRuins.xaml.cs">
+      <DependentUpon>CastleInRuins.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Story\Introduction.xaml.cs">
+      <DependentUpon>Introduction.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GameControls\Story\IStory.cs" />
+    <Compile Include="GameControls\Story\StoryControl.xaml.cs">
+      <DependentUpon>StoryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AnimationHelpers.cs" />
+    <Compile Include="Helpers\BindingHelper.cs" />
+    <Compile Include="Helpers\CommandHandler..cs" />
+    <Compile Include="Helpers\GlobalRandom.cs" />
+    <Compile Include="Helpers\ObservableCollectionObject.cs" />
+    <Compile Include="Helpers\ObservableImmutableDictionary.cs" />
+    <Compile Include="Helpers\ObservableImmutableList.cs" />
+    <Compile Include="MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Problems\Images\ProblemImages.cs" />
+    <Compile Include="Problems\Keys\ProblemKeys.cs" />
+    <Compile Include="Problems\MathRelated\AdvancedMath.cs" />
+    <Compile Include="Problems\MathRelated\MathProblem.cs" />
+    <Compile Include="Problems\MusicTheory\TrebleNotes.xaml.cs">
+      <DependentUpon>TrebleNotes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Problems\Words\ProblemWords.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="GameControls\Story\TriangleCastle.xaml.cs">
+      <DependentUpon>TriangleCastle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\GameViewVm.cs" />
+    <Compile Include="ViewModel\MainWindowVm.cs" />
+    <Page Include="GameControls\Affects\AffectsResolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Affects\WrongButtonAffectView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Backgrounds\Level0.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Backgrounds\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\BasicCircleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Bosses\BossResolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Bosses\Level0_CoinBossView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Bosses\Level1_StarBossView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\CreepViewResolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Obstacles\NinjaStarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Obstacles\BombView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Creeps\Type1\Type1Variant1View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Creeps\Type1\Type1Variant1_1View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Creeps\Type1\Type1Variant2View.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Creeps\Type1\Type1Variant3View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type2\Type2Variant1View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type2\Type2Variant2View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type2\Type2Variant3View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type2\Type2Variant4View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type3\Type3Variant1_TrebleNotes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Creeps\Type3\TYpe3Variant2_ImageQuestions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\ProjectileViews\ProjectileStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\ProjectileViews\ProjectileResolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Sound\SoundControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Story\CastleInRuins.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Story\Introduction.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Story\StoryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="GameControls\Backgrounds\BackgroundControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GameControls\Ship.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameControls\Story\TriangleCastle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Problems\MusicTheory\TrebleNotes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="GameControls\Fonts\beyondwonderland.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Fonts\goodtimes.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Fonts\headbd.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Fonts\QUARTZMS.TTF">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <None Include="GameControls\logo.design" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Creeps\Bombs\" />
+    <Folder Include="Core\Creeps\Obstacles\" />
+    <Folder Include="GameControls\ViewModel\" />
+    <Folder Include="Problems\Biology\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameControls\Backgrounds\images\bg1.jpg" />
+    <Resource Include="GameControls\Image1.png" />
+    <Resource Include="GameControls\Image2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameControls\Story\images\black-crown-clipart-queen-crown-md.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Story\images\f4.png" />
+    <Resource Include="GameControls\Story\images\flame1.png" />
+    <Resource Include="logosmall.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="GameControls\Backgrounds\images\bg-09.jpg" />
+    <Resource Include="GameControls\Backgrounds\images\bg2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Problems\Images\Assets\apple.JPG" />
+    <Resource Include="Problems\Images\Assets\avocado.JPG" />
+    <Resource Include="Problems\Images\Assets\backpack.JPG" />
+    <Resource Include="Problems\Images\Assets\battery.JPG" />
+    <Resource Include="Problems\Images\Assets\bed.JPG" />
+    <Resource Include="Problems\Images\Assets\bee.JPG" />
+    <Resource Include="Problems\Images\Assets\beer.JPG" />
+    <Resource Include="Problems\Images\Assets\bell.JPG" />
+    <Resource Include="Problems\Images\Assets\bird.JPG" />
+    <Resource Include="Problems\Images\Assets\book.JPG" />
+    <Resource Include="Problems\Images\Assets\cake.JPG" />
+    <Resource Include="Problems\Images\Assets\camel.JPG" />
+    <Resource Include="Problems\Images\Assets\camera.JPG" />
+    <Resource Include="Problems\Images\Assets\cherry.JPG" />
+    <Resource Include="Problems\Images\Assets\coffee.JPG" />
+    <Resource Include="Problems\Images\Assets\cookie.JPG" />
+    <Resource Include="Problems\Images\Assets\cow.JPG" />
+    <Resource Include="Problems\Images\Assets\crab.JPG" />
+    <Resource Include="Problems\Images\Assets\dice.JPG" />
+    <Resource Include="Problems\Images\Assets\dinosaur.JPG" />
+    <Resource Include="Problems\Images\Assets\dolphin.JPG" />
+    <Resource Include="Problems\Images\Assets\donkey.JPG" />
+    <Resource Include="Problems\Images\Assets\duck.JPG" />
+    <Resource Include="Problems\Images\Assets\eight.JPG" />
+    <Resource Include="Problems\Images\Assets\fish.JPG" />
+    <Resource Include="Problems\Images\Assets\five.JPG" />
+    <Resource Include="Problems\Images\Assets\four.JPG" />
+    <Resource Include="Problems\Images\Assets\frog.JPG" />
+    <Resource Include="Problems\Images\Assets\ghost.JPG" />
+    <Resource Include="Problems\Images\Assets\grape.JPG" />
+    <Resource Include="Problems\Images\Assets\hamburger.JPG" />
+    <Resource Include="Problems\Images\Assets\hammer.JPG" />
+    <Resource Include="Problems\Images\Assets\hat.JPG" />
+    <Resource Include="Problems\Images\Assets\hippo.JPG" />
+    <Resource Include="Problems\Images\Assets\house.JPG" />
+    <Resource Include="Problems\Images\Assets\knife.JPG" />
+    <Resource Include="Problems\Images\Assets\lemon.JPG" />
+    <Resource Include="Problems\Images\Assets\lightbulb.JPG" />
+    <Resource Include="Problems\Images\Assets\lightning.JPG" />
+    <Resource Include="Problems\Images\Assets\mountain.JPG" />
+    <Resource Include="Problems\Images\Assets\nail.JPG" />
+    <Resource Include="Problems\Images\Assets\nine.JPG" />
+    <Resource Include="Problems\Images\Assets\one.JPG" />
+    <Resource Include="Problems\Images\Assets\pan.JPG" />
+    <Resource Include="Problems\Images\Assets\pizza.JPG" />
+    <Resource Include="Problems\Images\Assets\pomegranate.JPG" />
+    <Resource Include="Problems\Images\Assets\pumpkin.JPG" />
+    <Resource Include="Problems\Images\Assets\rain.JPG" />
+    <Resource Include="Problems\Images\Assets\rainbow.JPG" />
+    <Resource Include="Problems\Images\Assets\rocket.JPG" />
+    <Resource Include="Problems\Images\Assets\seven.JPG" />
+    <Resource Include="Problems\Images\Assets\shoe.JPG" />
+    <Resource Include="Problems\Images\Assets\six.JPG" />
+    <Resource Include="Problems\Images\Assets\skunk.JPG" />
+    <Resource Include="Problems\Images\Assets\snowman.JPG" />
+    <Resource Include="Problems\Images\Assets\spider.JPG" />
+    <Resource Include="Problems\Images\Assets\strawberry.JPG" />
+    <Resource Include="Problems\Images\Assets\surf.JPG" />
+    <Resource Include="Problems\Images\Assets\sword.JPG" />
+    <Resource Include="Problems\Images\Assets\three.JPG" />
+    <Resource Include="Problems\Images\Assets\toothbrush.JPG" />
+    <Resource Include="Problems\Images\Assets\tornado.JPG" />
+    <Resource Include="Problems\Images\Assets\turtle.JPG" />
+    <Resource Include="Problems\Images\Assets\two.JPG" />
+    <Resource Include="Problems\Images\Assets\watermelon.JPG" />
+    <Resource Include="Problems\Images\Assets\witch.JPG" />
+    <Resource Include="Problems\Images\Assets\wolf.JPG" />
+    <Resource Include="Problems\Images\Assets\zebra.JPG" />
+    <Resource Include="Problems\Images\Assets\ufo.JPG" />
+    <Resource Include="Problems\Images\Assets\gun.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\car.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\kite.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\sun.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\rat.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\cat.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Problems\Images\Assets\dog.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg4.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Backgrounds\images\bg9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="GameControls\Story\images\storybg.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <EmbeddedResource Include="license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Music\BeyondStars.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="GameControls\logo-inv.png" />
+    <Resource Include="GameControls\logo.png" />
+    <Content Include="Music\Damnation.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\DerelictShip.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Defense.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Olympos.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Music\Wizard.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

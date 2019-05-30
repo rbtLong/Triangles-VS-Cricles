@@ -1,0 +1,467 @@
+﻿#region Liceense
+//  Distrubted Under the GNU Public License version 3 (GPLv3)
+// ========================================
+// 
+// Triangles Vs Circles
+// 
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//  
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//  
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//  The full license is also included in the root folder.
+// ========================================
+// 
+// Contacts:
+//   Robert Long - rbtLong@live.com
+//   Richard Vong - vongr@outlook.com
+//   Fausto Sihite - fsihite@uci.edu
+#endregion
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows;
+using TrianglesVCircles.Annotations;
+using TrianglesVCircles.Core.Animation.RandomMovements;
+using TrianglesVCircles.Core.Animation.RandomMovements.MoveStrategies;
+using TrianglesVCircles.Core.Projectiles.Attacks;
+using TrianglesVCircles.Helpers;
+
+namespace TrianglesVCircles.Core.Creeps
+{
+    public abstract class BaseEnemy : INotifyPropertyChanged, 
+        IRandomMovable, IAttackable, IDisposable
+    {
+        private List<string> _life;
+        private bool _enabled;
+        private double _xPosition;
+        private double _yPosition;
+        private string _caption;
+        private bool _isAlive = true;
+        private double _width = Dimensions.EnemyWidth;
+        private double _height = Dimensions.EnemyHeight;
+        private bool _invulnerable;
+        private RandomDestination _randomMove;
+        private RandomMover _randomMover;
+        private bool _attackable = true;
+        private IAttackable _target;
+        private BaseAttack _attack;
+        private IMoveStrategy _moveStrategy;
+        private bool _hasImage;
+        private Uri _image;
+        private int _initialHealth;
+        protected bool _captionDiffers;
+        private string _remaindingLife;
+        private string _answersInput = "";
+
+        protected Random _random = new Random(GlobalRandom.Next(1244,1824));
+
+        public event EventHandler Died = delegate { };
+        public event EventHandler LifeRemoved = delegate { }; 
+
+        protected abstract int InitializeDamage();
+
+        public string AnswersInput
+        {
+            get { return _answersInput; }
+            set
+            {
+                if (Equals(value, _answersInput)) return;
+                _answersInput = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool HasImage
+        {
+            get { return _hasImage; }
+            private set
+            {
+                if (value.Equals(_hasImage)) return;
+                _hasImage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool CaptionDiffers
+        {
+            get { return _captionDiffers; }
+            private set
+            {
+                if (value.Equals(_captionDiffers)) return;
+                _captionDiffers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Uri Image
+        {
+            get { return _image; }
+            private set
+            {
+                if (Equals(value, _image)) return;
+                _image = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int InitialHealth
+        {
+            get { return _initialHealth; }
+            private set
+            {
+                if (value == _initialHealth) return;
+                _initialHealth = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double Health
+        {
+            get { return Life.Count*1.0/InitialHealth; }
+        }
+
+        public IAttackable Target
+        {
+            get { return _target; }
+            set
+            {
+                if (Equals(value, _target)) return;
+                _target = value;
+                OnPropertyChanged();
+            }
+        }
+
+        protected abstract BaseAttack InitializeAttack();
+
+        public IMoveStrategy MoveStrategy
+        {
+            get { return _moveStrategy; }
+            set
+            {
+                if (Equals(value, _moveStrategy)) return;
+                _moveStrategy = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public BaseAttack Attack
+        {
+            get { return _attack; }
+            set
+            {
+                if (Equals(value, _attack)) return;
+                _attack = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Rect HitBox
+        {
+            get
+            {
+                return new Rect(
+                    XPosition, YPosition, 
+                    Math.Abs(XPosition + Width), 
+                    Math.Abs(YPosition+Height));
+            }
+        }
+
+        public RandomMover RandomMover
+        {
+            get { return _randomMover; }
+            protected set
+            {
+                if (Equals(value, _randomMover)) return;
+                _randomMover = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public virtual RandomDestination RandomMove
+        {
+            get { return _randomMove; }
+            set
+            {
+                if (Equals(value, _randomMove)) return;
+                _randomMove = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public double Height
+        {
+            get { return _height; }
+            set
+            {
+                if (value.Equals(_height)) return;
+                _height = value;
+                OnPropertyChanged();
+                OnPropertyChanged("HitBox");
+            }
+        }
+
+        public double Width
+        {
+            get { return _width; }
+            set
+            {
+                if (value.Equals(_width)) return;
+                _width = value;
+                OnPropertyChanged();
+                OnPropertyChanged("HitBox");
+                OnPropertyChanged("Center");
+            }
+        }
+
+        public bool IsAlive
+        {
+            get { return _isAlive; }
+            set
+            {
+                if (value.Equals(_isAlive)) return;
+                _isAlive = value;
+                if (!_isAlive)
+                    Attack.Stop();
+                OnPropertyChanged();
+            }
+        }
+
+        public bool Invulnerable
+        {
+            get { return _invulnerable; }
+            set
+            {
+                if (value.Equals(_invulnerable)) return;
+                _invulnerable = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Caption
+        {
+            get
+            {
+                if (!CaptionDiffers)
+                    _caption = RemaindingLife;
+                return _caption;
+            }
+            set
+            {
+                if (value == _caption) return;
+                OnPropertyChanged();
+            }
+        }
+
+        public string RemaindingLife
+        {
+            private set
+            {
+                if (value == _remaindingLife) return;
+                _remaindingLife = value;
+                OnPropertyChanged();
+            }
+            get
+            {
+                var str = "";
+                Life.ForEach(o => str += o);
+                _remaindingLife = str;
+                return _remaindingLife;
+            }
+        }
+
+        public double XPosition
+        {
+            get { return _xPosition; }
+            set
+            {
+                if (value.Equals(_xPosition)) return;
+                _xPosition = value;
+                OnPropertyChanged();
+                OnPropertyChanged("HitBox");
+                OnPropertyChanged("Center");
+            }
+        }
+
+        public double YPosition
+        {
+            get { return _yPosition; }
+            set
+            {
+                if (value.Equals(_yPosition)) return;
+                _yPosition = value;
+                OnPropertyChanged();
+                OnPropertyChanged("HitBox");
+                OnPropertyChanged("Center");
+            }
+        }
+
+        public Point Center
+        {
+            get
+            {
+                return new Point(
+                    XPosition + (Width/2), 
+                    YPosition + (Height/2));
+            }
+        }
+
+        public List<string> Life
+        {
+            get { return _life; }
+            set
+            {
+                if (Equals(value, _life)) return;
+                _life = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public bool Enabled
+        {
+            get { return _enabled; }
+            set
+            {
+                if (value.Equals(_enabled)) return;
+                _enabled = value;
+                OnPropertyChanged();
+            }
+        }
+
+        protected BaseEnemy(char life, IAttackable target,
+            IMoveStrategy moveStrategy)
+        {
+            _target = target;
+            _life = new List<string>();
+            _life.Add(life.ToString());
+            _moveStrategy = moveStrategy;
+            init();
+        }
+
+        protected BaseEnemy(char life, Uri image, IAttackable target, 
+            IMoveStrategy moveStrategy)
+            : this(life, target, moveStrategy)
+        {
+            _image = image;
+            _captionDiffers = true;
+        }
+
+        protected BaseEnemy(IEnumerable<string> life, Uri image, 
+            IAttackable target, IMoveStrategy moveStrategy)
+            : this(life, target, moveStrategy)
+        {
+            _image = image;
+            _captionDiffers = true;
+        }
+
+        protected BaseEnemy(IEnumerable<string> life,
+            IAttackable target, IMoveStrategy moveStrategy)
+        {
+            _target = target;
+            _life = new List<string>(life);
+            _moveStrategy = moveStrategy;    
+            init();
+        }
+
+        protected BaseEnemy(string life,
+            IAttackable target, IMoveStrategy moveStrategy)
+        {
+            _target = target;
+            _life = life.Select(ch => ch.ToString()).ToList();
+            _moveStrategy = moveStrategy;
+            init();
+        }
+
+        protected BaseEnemy(string question, string answer,
+            IAttackable target, IMoveStrategy moveStrategy)
+        {
+            _caption = question;
+            _target = target;
+            _life = answer.Select(ch => ch.ToString()).ToList();
+            _moveStrategy = moveStrategy;
+            init();
+            _captionDiffers = true;
+        }
+
+        private void init()
+            {
+                _attack = InitializeAttack();
+                _randomMove = new RandomDestination(
+                    new Point(_xPosition, _yPosition),
+                    new Rect(new Point(Width/2, Height/2),
+                        new Point(
+                            Dimensions.StageWidth - 30,
+                            Dimensions.StageHeight*(2/3.0))),
+                    _moveStrategy);
+                _randomMover = new RandomMover(this);
+                if (_life.Any()) Caption = _life.FirstOrDefault();
+                setInitialPos();
+                _attack.Damage = InitializeDamage();
+                InitialHealth = Life.Count;
+            }
+
+        private void checkIsAlive()
+        {
+            if (_life.Count == 0)
+            {
+                IsAlive = false;
+                Died(this, null);
+            }
+        }
+
+        public void RemoveLife()
+        {
+            _answersInput += Life[0];
+            if(Life.Any())
+                Life.RemoveAt(0);
+            checkIsAlive();
+            OnPropertyChanged("Health");
+            OnPropertyChanged("Caption");
+            OnPropertyChanged("RemaindingLife");
+            OnPropertyChanged("AnswersInput");
+            LifeRemoved(this, EventArgs.Empty);
+        }
+
+        protected virtual void setInitialPos()
+        {
+            XPosition = _random.Next(0, (int)Dimensions.StageWidth - 20);
+            YPosition = _random.Next(0, 300);
+        }
+
+        public bool Attackable
+        {
+            get { return _attackable; }
+            set
+            {
+                if (value.Equals(_attackable)) return;
+                _attackable = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public virtual void Dispose()
+        {
+            _attack.Dispose();
+        }
+    }
+}

@@ -1,0 +1,85 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:trianglesVCircles="clr-namespace:TrianglesVCircles"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:viewModel="clr-namespace:TrianglesVCircles.ViewModel"
+		xmlns:sound="clr-namespace:TrianglesVCircles.GameControls.Sound"
+		xmlns:story="clr-namespace:TrianglesVCircles.GameControls.Story"
+		xmlns:backgrounds="clr-namespace:TrianglesVCircles.GameControls.Backgrounds"
+		mc:Ignorable="d" x:Class="TrianglesVCircles.MainWindow"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None"
+        Background="Transparent" Title="MainWindow"
+        AllowsTransparency="True"
+        DataContext="{DynamicResource Vm}"
+        Width="{x:Static trianglesVCircles:Dimensions.WindowWidth}"
+        Height="{x:Static trianglesVCircles:Dimensions.WindowHeight}">
+	<Window.Resources>
+        <viewModel:MainWindowVm x:Key="Vm" />
+    </Window.Resources>
+    <Border CornerRadius="10" BorderBrush="Black"  
+		BorderThickness="{x:Static trianglesVCircles:Dimensions.WindowBorderThickness}">
+		<Grid Background="Transparent" x:Name="grid">
+			<Grid.Resources>
+				<Style x:Key="CloseBtnStyle" TargetType="{x:Type Button}">
+					<Setter Property="Template">
+						<Setter.Value>
+							<ControlTemplate>
+								<Border
+									x:Name="btnCloseBorder"
+									BorderThickness="2"                               
+									VerticalAlignment="Top"
+									HorizontalAlignment="Right"
+									BorderBrush="#96FFFFFF"
+									Background="{TemplateBinding Background}"
+									Padding="5,3,5,3" Margin="0,5,5,0"
+									CornerRadius="9">
+									<TextBlock
+										FontWeight="ExtraBlack"
+										Text="X" FontSize="22"
+										Foreground="{TemplateBinding Foreground}" />
+								</Border>
+							</ControlTemplate>
+						</Setter.Value>
+					</Setter>
+					<Style.Triggers>
+						<Trigger Property="IsMouseOver" Value="True">
+							<Setter Property="Background" Value="#B5FFFFFF" />
+							<Setter Property="Foreground" Value="#565656" />
+						</Trigger>
+						<Trigger Property="IsMouseOver" Value="False">
+							<Setter Property="Background" Value="#14FFFFFF" />
+							<Setter Property="Foreground" Value="#5CFFFFFF" />
+						</Trigger>
+					</Style.Triggers>
+				</Style>
+			</Grid.Resources>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+            <sound:SoundControl />
+            <backgrounds:BackgroundControl 
+                Grid.RowSpan="2"
+                Visibility="{Binding BackgroundVisibility}"/>
+            <trianglesVCircles:GameView 
+                x:Name="MainView" Grid.Row="1" 
+				HorizontalAlignment="Stretch"
+				VerticalAlignment="Stretch"
+                DataContext="{Binding GameVm}"
+                Visibility="{Binding GameVisibility, 
+                    Source={StaticResource Vm}}"/>
+            <trianglesVCircles:MainMenu
+                Visibility="{Binding MenuVisibility}"
+                StartGameCommand="{Binding StartGameCmd}"
+                ExitCommand="{Binding ExitGameCmd}"
+                VerticalAlignment="Center" Grid.RowSpan="2" />
+            <story:StoryControl Grid.RowSpan="2" Visibility="{Binding StoryVisibility}" />
+            <Button Grid.Row="1" Click="ButtonBase_OnClick" 
+				Style="{StaticResource CloseBtnStyle}" >
+                <Path Data="" Fill="#FFF4F4F5" Stretch="Fill" Stroke="Black"/>
+            </Button>
+        </Grid>
+	</Border>
+</Window>

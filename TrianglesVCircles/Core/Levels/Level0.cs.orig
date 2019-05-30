@@ -1,0 +1,535 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
+using System.Windows.Documents;
+using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
+using TrianglesVCircles.Core.Animation.RandomMovements.MoveStrategies;
+using TrianglesVCircles.Core.Creeps;
+using TrianglesVCircles.Core.Creeps.Bosses;
+using TrianglesVCircles.Core.Creeps.Type1;
+using TrianglesVCircles.Core.Creeps.Type2;
+using TrianglesVCircles.Core.Ship;
+using TrianglesVCircles.Helpers;
+
+namespace TrianglesVCircles.Core.Levels
+{
+    public sealed class Level0 : BaseLevel
+    {
+        const string phase0Possibilities = "asdfqz3rgew";
+        const string phase1Possibilities = "asdfqwer1234zxcv";
+        const string phase2Possibilities_left = "qwertasdfgzxcvb12345";
+        const string phase2Possibilities_right = "yuiophjklbnm678890";
+        private int wave = 0;
+        private int _phase = -1;
+
+        public int Phase
+        {
+            get { return _phase; }
+            private set { _phase = value; }
+        }
+
+        public Level0(ref ObservableCollection<BaseEnemy> enemies,
+            ShipCore ship)
+            : base(enemies, ship)
+        {
+        }
+
+        protected override void InitializeEnemies()
+        {
+<<<<<<< local
+<<<<<<< local
+=======
+            //Phase = -1;
+            //level2AddEnemies(20);
+            //beginBossFight();
+>>>>>>> other
+            Phase = 0;
+            phase0AddEnemies(GlobalRandom.Next(6, 10));
+=======
+            Timed.Exec(() =>
+            {
+                //Phase = 2;
+                //beginBossFight();
+                //ElapsedTime.Restart();
+                Phase = 0;
+                phase0AddEnemies(GlobalRandom.Next(7, 14));
+                OnStageMessage("Phase1\nDodge enemy attacks!!");
+            }, 12000);
+
+            Timed.Exec(() => OnStageMessage("Get Ready!"), 100);
+            Timed.Exec(() => OnStageMessage("Starting in 3 . . .\nDon't Shoot in Phase 0!"), 3000);
+            Timed.Exec(() => OnStageMessage("Starting in 2 . . .\nDon't Shoot in Phase 0!"), 6000);
+            Timed.Exec(() => OnStageMessage("Starting in 1 . . .\nDon't Shoot in Phase 0!"), 9000);
+>>>>>>> other
+        }
+
+        protected override void OnEnemiesRemoved() { }
+
+        protected override void OnEnemiesAdded() { }
+
+        public override void PointDeducted(double currentScore)
+        {
+            if(Phase == 0) phase0Hints();
+            if (Phase == 3 && ElapsedTime.Elapsed < TimeSpan.FromSeconds(30))
+                bossHints();
+        }
+
+            private void bossHints()
+            {
+                var hint = this.PickFrom(new[]
+                {
+                    "Ooops! Try not to attack when its blue!!",
+                    "This boss is invincible when its blue!!",
+                    "Watch out!! Hold your fire when it's blue!"
+                });
+                OnStageMessage(hint);
+            }
+
+            private void phase0Hints()
+                {
+                    var dontFireHints = new[]
+                    {
+                        "Hold your fire!\nTry to ride it out!",
+                        "Ooops!! Don't shoot yet, hold on!",
+                        "Oh no, don't fire yet!!"
+                    };
+                    if (Phase == 0 
+                        && wave == 0
+                        && ElapsedTime.Elapsed < TimeSpan.FromSeconds(50))
+                        OnStageMessage(dontFireHints.Pick());
+                }
+
+        public override void PointGained(double currentScore)
+        {
+        }
+
+        protected override void TimerElapsed()
+        {
+            if(Phase == 0)
+                phase0Ticks();
+            else if (Phase == 1)
+                phase1Ticks();
+            else if (Phase == 2)
+                phase2Ticks();
+            else if (Phase == 3)
+                phase3Ticks();
+        }
+
+        private void phase3Ticks()
+        {
+            if (wave == 0 && lapsed(6))
+                OnStageMessage("Remember: Don't attack when it's blue!!");
+
+            if (ElapsedTime.Elapsed > TimeSpan.FromSeconds(10))
+            {
+                if (Enemies.All(o => !o.IsAlive)
+                    && wave == 0)
+                {
+                    wave = 1;
+                    OnStageMessage("Oh no, there's more!?\nHang in there!");
+                    addBoss();
+                    Timed.Exec(addBoss, 3211);
+                }
+                else if (Enemies.All(o => !o.IsAlive)
+                         && wave == 1)
+                {
+                    wave = 2;
+                    OnStageMessage("Level 0 COMPLETE!!\nYou're Good!");
+                }
+                else if (Enemies.All(o => !o.IsAlive)
+                         && wave == 2)
+                {
+                    ElapsedTime.Restart();
+                    OnHealthRestore(100);
+                    Timed.Exec(OnLevelComplete, 1200);
+                    Timed.Exec(() => OnStageMessage("Now, prepare yourself!"), 100);
+                    wave++;
+                }
+            }
+        }
+
+        private void phase0Ticks()
+            {
+                if (ElapsedTime.Elapsed >= TimeSpan.FromSeconds(0)
+                    && ElapsedTime.Elapsed <= TimeSpan.FromSeconds(45))
+                    foreach (var enemies in Enemies)
+                        enemies.Invulnerable = true;
+
+                if (ElapsedTime.Elapsed >= TimeSpan.FromSeconds(60)
+                    && ElapsedTime.Elapsed <= TimeSpan.FromSeconds(61))
+                    foreach (var enemies in Enemies)
+                        enemies.Invulnerable = false;
+
+                if (lapsed(6))
+                {
+                    OnStageMessage("Remember: just dodge, don't attack!");
+                }
+
+                if (lapsed(15))
+                {
+                    if(Enemies.Count < 10)
+                        phase0AddEnemies(GlobalRandom.Next(3, 4));
+                    OnStageMessage("Keep it up!");
+                }
+                else if (lapsed(30))
+                {
+                    if (Enemies.Count < 13)
+                    phase0AddEnemies(GlobalRandom.Next(3, 6));
+                    OnStageMessage("Here's a few more!");
+                }
+                else if (lapsed(45))
+                {
+                    if (Enemies.Count < 15)
+                    phase0AddEnemies(GlobalRandom.Next(4, 8));
+                    OnStageMessage("Keep it up, you're almost there!");
+                }
+                else if (lapsed(60))
+                {
+                    OnStageMessage("Fire away!");
+                }
+
+
+                if (Enemies.All(o => !o.IsAlive))
+                {
+                    OnHealthRestore(100);
+                    OnStageMessage("Phase 0 Complete!\n Good JOB!!");
+                    Timed.Exec(beginPhase1, 2800);
+                }
+
+            }
+
+                private void phase0AddEnemies(int count)
+                {
+                    for (int i = 0; i < count; i++)
+                    {
+                        var move = new RangedMovements(
+                            new Point(10, 20),
+                            new Point(15, 65));
+
+                        var moveArc = new VerticalWandering(
+                          GlobalRandom.Next(25, 100),
+                          GlobalRandom.Next(400, 530),
+                          GlobalRandom.Next(5, 23),
+                          GlobalRandom.Next(300, 350));
+
+                        var r = GlobalRandom.Next(5);
+                        int pos = GlobalRandom.Next(phase0Possibilities.Length - 1);
+
+                        BaseEnemy enemy = null;
+
+                        if (r == 0)
+                            enemy = new BasicCircle(phase0Possibilities[pos], Ship, move);
+                        else if (r == 1)
+                            enemy = new Type1Variant1(phase0Possibilities[pos], Ship, moveArc);
+
+                        if (!ReferenceEquals(null, enemy))
+                        {
+                            move.Size = new Size(enemy.Width, enemy.Height);
+                            moveArc.Size = new Size(enemy.Width, enemy.Height);
+                            if (enemy.MoveStrategy is VerticalWandering)
+                                enemy.RandomMover.AutoManageSpeed = true;
+                            AddEnemy(enemy);
+                        }
+                    }
+                }
+
+            private void beginPhase1()
+            {
+                if (Phase == 0)
+                {
+                    ElapsedTime.Restart();
+                    Phase = 1;
+                    OnStageMessage("Phase 1\nEnemies are trickier to kill!");
+                    phase1AddEnemies(GlobalRandom.Next(25, 27));
+                }
+
+            }
+
+          private void phase1Ticks()
+          {
+              if (wave == 0 && lapsed(15)
+                  && Enemies.Count < 35)
+                  phase1AddEnemies(GlobalRandom.Next(18, 22));
+              else if (wave == 1 && lapsed(10)
+                  && Enemies.Count < 45)
+                  phase1AddEnemies(GlobalRandom.Next(12, 20));
+              else if (wave == 2 && lapsed(10)
+                  && Enemies.Count < 60)
+                  phase1AddEnemies(GlobalRandom.Next(15, 18));
+
+
+              if (Enemies.Count == 0)
+              {
+                  if (wave == 0)
+                  {
+                      OnStageMessage("It's going to get tougher!");
+                      phase1AddEnemies(GlobalRandom.Next(13, 17));
+                      wave = 1;
+                  }
+                  else if (wave == 1)
+                  {
+                      OnStageMessage("Hint: Wait until enemies fire, " +
+                                     "then move as little as possible.");
+                      phase1AddEnemies(GlobalRandom.Next(22, 28));
+                      wave = 2;
+                  }
+                  else if (wave == 2)
+                  {
+                      OnStageMessage("Here's a Bonus Life! KEEP GOING!!!");
+                      OnLifeRestore(1);
+                      phase1AddEnemies(GlobalRandom.Next(27, 33));
+                      wave = 3;
+                  }
+              }
+              else if (Enemies.All(o => !o.IsAlive)
+                       && wave > 2)
+              {
+                  OnHealthRestore(100);
+                  OnStageMessage("Phase 1 Complete!\n No more handle bars!");
+                  Timed.Exec(beginPhase2, 2800);
+              }
+          }
+
+              private void phase1AddEnemies(int count)
+              {
+
+                  for (var i = 0; i < count; i++)
+                  {
+
+                      var move = new RangedMovements(
+                        new Point(10, 20),
+                        new Point(15, 65));
+
+                      var moveArc = new RangedMovements(
+                          new Point(10, 20),
+                          new Point(25, 120));
+
+                      new VerticalWandering(
+                          GlobalRandom.Next(30, 130),
+                          GlobalRandom.Next(400, 550),
+                          GlobalRandom.Next(5, 23),
+                          GlobalRandom.Next(300, 350));
+
+                      var r = GlobalRandom.Next(5);
+                      int pos = GlobalRandom.Next(phase1Possibilities.Length - 1);
+
+                      BaseEnemy enemy = null;
+
+                      if (r == 0)
+                          enemy = new BasicCircle(
+                              phase1Possibilities[pos], Ship, move);
+                      else if (r == 1)
+                          enemy = new Type1Variant1(
+                              phase1Possibilities[pos], Ship, moveArc);
+
+                      if (!ReferenceEquals(null, enemy))
+                      {
+                          move.Size = new Size(enemy.Width, enemy.Height);
+                          moveArc.Size = new Size(enemy.Width, enemy.Height);
+                          if (enemy.MoveStrategy is VerticalWandering)
+                              enemy.RandomMover.AutoManageSpeed = true;
+                          AddEnemy(enemy); 
+                      }
+                  }
+              }
+
+          private void beginPhase2()
+          {
+              if (Phase == 1)
+              {
+                  ElapsedTime.Restart();
+                  OnHealthRestore(100);
+                  Phase = 2;
+                  wave = 0;
+                  OnStageMessage("Phase 2\nEven more variety!");
+                  phase2AddEnemies(GlobalRandom.Next(17, 23));
+              }
+          }
+
+
+          private void phase2Ticks()
+          {
+
+
+              if (Enemies.Count == 0)
+              {
+                  if (wave == 0)
+                  {
+                      OnStageMessage("Be Fast, Be Precise!");
+                      phase2AddEnemies(GlobalRandom.Next(18, 23));
+                      wave = 1;
+                  }
+                  else if (wave == 1)
+                  {
+                      OnStageMessage("You're improving with both hands!!");
+                      phase2AddEnemies(GlobalRandom.Next(25, 28));
+                      wave = 2;
+                  }
+                  else if (wave == 2)
+                  {
+                      OnStageMessage("Here's a Bonus Life! KEEP GOING!!!");
+                      OnLifeRestore(1);
+                      phase2AddEnemies(GlobalRandom.Next(27, 32));
+                      wave = 3;
+                  }
+              }
+              else if (Enemies.All(o => !o.IsAlive)
+                       && wave > 2)
+              {
+                  OnHealthRestore(100);
+                  OnStageMessage("Phase 2 Complete!\nYou're GOOD!");
+                  Timed.Exec(beginBossFight, 2800);
+              }
+
+
+          }
+
+              private void phase2AddEnemies(int count)
+              {
+
+                  for (var i = 0; i < count; i++)
+                  {
+                      var move = new RangedMovements(
+                            new Point(10, 20),
+                            new Point(15, 65));
+
+                      var moveArc = new VerticalWandering(
+                        GlobalRandom.Next(35, 150),
+                        GlobalRandom.Next(400, 550),
+                        GlobalRandom.Next(5, 23),
+                        GlobalRandom.Next(300, 350));
+
+                      var r = GlobalRandom.Next(5);
+                      int pos = GlobalRandom.Next(phase1Possibilities.Length - 1);
+                      var ch = '\0';
+
+                      if (GlobalRandom.Next(0, 10)%2 == 0)
+                          ch = phase2Possibilities_left[pos];
+                      else
+                          ch = phase2Possibilities_right[pos];
+
+
+                      BaseEnemy enemy = null;
+
+                      if (r == 0)
+                          enemy = new BasicCircle(
+                              ch, Ship, move);
+                      else if (r == 1)
+                          enemy = new Type1Variant1(
+                              ch, Ship, moveArc);
+
+                      if (!ReferenceEquals(null, enemy))
+                      {
+                          move.Size = new Size(enemy.Width, enemy.Height);
+                          moveArc.Size = new Size(enemy.Width, enemy.Height);
+                          if (enemy.MoveStrategy is VerticalWandering)
+                              enemy.RandomMover.AutoManageSpeed = true;
+                          AddEnemy(enemy);
+                      } 
+                  }
+              }
+
+<<<<<<< local
+              private void level2AddEnemies(int count)
+              {
+
+                  for (var i = 0; i < count; i++)
+                  {
+                      var move = new RangedMovements(
+                            new Point(10, 20),
+                            new Point(15, 65));
+
+                      var moveArc = new RangedMovements(
+                          new Point(10, 20),
+                          new Point(25, 120));
+
+                      var vMove = new VerticalOscillation(
+                            GlobalRandom.Next(5, 60),
+                            GlobalRandom.Next(70, 550));
+
+                      int pos = GlobalRandom.Next(phase1Possibilities.Length - 1);
+                      var picker = GlobalRandom.Next(0, 2);
+                      var ch = '\0';
+
+                      if (GlobalRandom.Next(0, 10) % 2 == 0)
+                          ch = phase2Possibilities_left[pos];
+                      else
+                          ch = phase2Possibilities_right[pos];
+
+                      BaseEnemy enemy = null;
+
+                      if (picker == 0)
+                      {
+                          var d = vMove.Max - vMove.Min;
+                          enemy = new Type2Variant1(ch, Ship, vMove);
+                          enemy.RandomMover.Duration = TimeSpan.FromMilliseconds(8 * d);
+                      }
+                      else if (picker == 1)
+                          enemy = new Type2Variant2(ch, Ship, move);
+
+                      if (!ReferenceEquals(null, enemy))
+                      {
+                          move.Size = new Size(enemy.Width, enemy.Height);
+                          moveArc.Size = new Size(enemy.Width, enemy.Height);
+                          addEnemy(enemy);
+                      }
+                  }
+              }
+<<<<<<< local
+ 
+=======
+=======
+>>>>>>> other
+
+>>>>>>> other
+                private void beginBossFight()
+                {
+                    if (Phase == 2)
+                    {
+                        wave = 0;
+                        ElapsedTime.Restart();
+                        OnStageMessage("Level 0 Boss!!!!\nDo not attack when its blue.");
+                        Phase = 3;
+                        addBoss();
+                    }
+                }
+
+                    private void addBoss()
+                    {
+                        var move = new RangedMovements(
+                            new Point(10, 20),
+                            new Point(15, 65));
+
+                        var life = new List<string>();
+                        for (int i = 0; i < GlobalRandom.Next(5, 8); ++i)
+                        {
+                            var pos = GlobalRandom.Next(phase1Possibilities.Length - 1);
+                            life.Add(phase1Possibilities[pos].ToString());
+                        }
+
+                        var boss = new Level0_CoinBoss(life.AsEnumerable(), Ship, move);
+                        move.Size = new Size(boss.Width, boss.Height);
+                        AddEnemy(boss);
+                    }
+
+
+        private bool lapsed(int secs)
+        {
+            return ElapsedTime.Elapsed >= TimeSpan.FromSeconds(secs)
+                   && ElapsedTime.Elapsed <= TimeSpan.FromSeconds(secs+1);
+        }
+
+        protected override string InitializeTitleName()
+        {
+            return "Level 0";
+        }
+
+        protected override int InitializeCurrentLevel()
+        {
+            return 0;
+        }
+    }
+}
